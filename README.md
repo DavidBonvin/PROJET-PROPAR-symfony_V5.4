@@ -23,5 +23,13 @@ terminées (triées par ordre alphabétique aussi).
 ## Sprint  N°1   13/09/2022
 
 - [x] Création du MCD 
-- [ ] Mise en place des relations entre les pages via les entités. 
-- [ ] Montée en compétence Symfony 
+- [x] Mise en place des relations entre les pages via les entités. 
+- [x] Montée en compétence Symfony 
+
+test-karim
+test-David
+test-mohir
+## Sprint  N°2   20/09/2022
+- []
+- []
+- []
