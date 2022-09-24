@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+{% block monTitre %}Inscription sur le site{% endblock %}
+{% block body %}
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.uuid,{
+            "attr":{"placeholder":"Saisir votre login"},
+            "label":"Votre Login"
+        })}}
+        {{ form_row(registrationForm.password, {
+            label: 'Password'
+        }) }}
+        
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn btn-primary" >inscripter</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
