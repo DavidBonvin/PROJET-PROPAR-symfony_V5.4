@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+<<<<<<< HEAD
+{% block monTitre %}Inscription sur le site{% endblock %}
+{% block body %}
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.uuid,{
+            "attr":{"placeholder":"Saisir votre login"},
+            "label":"Votre Login"
+        })}}
+        {{ form_row(registrationForm.password, {
+            label: 'Password'
+        }) }}
+        
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn btn-primary" >inscripter</button>
+=======
+
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.nom) }}
+        {{ form_row(registrationForm.prenom) }}
+        {{ form_row(registrationForm.identifiant) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+>>>>>>> 6fa3b538f22a598c8c69406a1cd786c5b8f721be
+    {{ form_end(registrationForm) }}
+{% endblock %}
