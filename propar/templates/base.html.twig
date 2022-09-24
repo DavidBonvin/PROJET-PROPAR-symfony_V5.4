@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" type="image/x-con" href="{{asset('images/propar/Propar3.ico')}}">
+		<link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css"> {% block stylesheets %}{% endblock %}
+
+
+		</head>
+		<body>
+
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="{{path('operations')}}"><img src={{asset('images/propar/Propar3.ico')}} height="50"></a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item">
+							<a class="nav-link active" href="{{path('app_home')}}">Nos Services
+
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('admin_operation')}}">Administration</a>
+						</li>
+<<<<<<< HEAD
+						{% if not app.user %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('inscription')}}">Inscription</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_login')}}">Login</a>
+						</li>
+						 {% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_logout')}}">Logout</a>
+						</li>
+						{% endif %}
+						
+=======
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_register')}}">Authentification</a>
+						</li>
+						
+
+>>>>>>> 6fa3b538f22a598c8c69406a1cd786c5b8f721be
+					</nav>
+
+					<h1 class="border border-dark rounded p-2 m-2 text-white bg-primary"> {% block monTitre %}{% endblock %}
+						</h1>
+						{% block body %}{% endblock %}
+
+						{% block javascripts %}{% endblock %}
+						<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+						<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+						<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+					</body>
+				</html>
+			</body>
+		</html>
