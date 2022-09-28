@@ -15,7 +15,7 @@ class OperationController extends AbstractController
      */
     public function index(OperationRepository $repository): Response
     {
-        $operations =$repository ->findAll();
+        $operations = $repository->findAll();
         return $this->render('operation/operations.html.twig', [
             'operations' => $operations
         ]);
