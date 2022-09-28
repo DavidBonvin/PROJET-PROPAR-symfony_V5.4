@@ -2,8 +2,9 @@
 
 {% block title %}Register{% endblock %}
 
-{% block body %}
-    <h1>Register</h1>
+
+{% block main2 %} 
+			  <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
@@ -14,4 +15,7 @@
 
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
+							
 {% endblock %}
+  
+
