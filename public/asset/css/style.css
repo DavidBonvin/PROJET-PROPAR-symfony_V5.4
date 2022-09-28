@@ -14,10 +14,14 @@ body {
   }
   #navbartop {
       background-color:#3D6A9E;
+      height:10%;
+      width: 100%;
+      
   }
   .logo {
-      margin-top: 10%;
-      margin-left: 25%;
+    width: 100%;
+    padding: 10%;
+      
   }
   .listLateral  {
       color: white;
@@ -29,5 +33,10 @@ body {
       color: white;
       
 
+  }
+  #peremain2 {
+    height: 90%;
+    overflow: auto;
+    
   }
   
