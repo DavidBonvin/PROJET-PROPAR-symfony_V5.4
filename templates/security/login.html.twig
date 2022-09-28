@@ -10,7 +10,7 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            You are logged in as {{ app.user.prenom }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
 
@@ -37,5 +37,10 @@
     <button class="btn btn-lg btn-primary" type="submit">
     s'identifier
     </button>
+    <button class="btn btn-lg btn-primary" type="submit">
+       <a href="{{ path('connect_google') }}">
+        Sign in with Google
+    </a>
+        </button>
 </form>
 {% endblock %}

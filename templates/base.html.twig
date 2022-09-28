@@ -8,20 +8,17 @@
 		</title>
 		<link rel="icon" type="image/x-con" href="{{asset('images/propar/Propar3.ico')}}">
 		<link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css"> {% block stylesheets %}{% endblock %}
-
-
 		</head>
 		<body>
-
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="{{path('operations')}}"><img src={{asset('images/propar/Propar3.ico')}} height="50"></a>
+					<a class="navbar-brand" href="{{path('app_home')}}"><img src={{asset('images/propar/Propar3.ico')}} height="50"></a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item">
-							<a class="nav-link active" href="{{path('app_home')}}">Nos Services
+							<a class="nav-link active" href="{{path('operations')}}">Nos Services
 
 							</a>
 						</li>
@@ -40,7 +37,6 @@
 							<a class="nav-link" href="{{path('app_logout')}}">Logout</a>
 						</li>
 						{% endif %}
-						
 					</nav>
 
 					<h1 class="border border-dark rounded p-2 m-2 text-white bg-primary"> {% block monTitre %}{% endblock %}
