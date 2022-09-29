@@ -2,7 +2,12 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 
- {% block main2 %} 
+ 
+ {% block navbarbase %} 
+<a href=""></a>
+<a class="btn btn-primary " href="{{ path('app_login') }}" role="button">Se connecter</a>
+{% endblock %}
+{% block main2 %} 
 		<div class="col-6">
       <h2>Liste d'operations en cours</h2>
       <table class="table">
