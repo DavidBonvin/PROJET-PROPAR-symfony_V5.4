@@ -45,27 +45,26 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('password' , RepeatedType::class, [
+            ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe et la confirmation doivent etre identique.',
                 'options' => ['attr' => ['class' => 'Votre mot de passe']],
                 'required' => true,
-                'first_options' => [ 
+                'first_options' => [
                     'label' => 'Mot de passe',
                     'attr'  => [
                         'placeholder' => 'Merci de saisir votre mot de passe'
                     ]
                 ],
-                'second_options' => [ 
+                'second_options' => [
                     'label' => 'Confirmez votre mot de passe',
                     'attr'  => [
                         'placeholder' => 'Merci de confirmer votre mot de passe'
                     ]
-                    ]
-    
+                ]
+
             ]);
-            
-        }
+    }
 
     public function configureOptions(OptionsResolver $resolver): void
     {

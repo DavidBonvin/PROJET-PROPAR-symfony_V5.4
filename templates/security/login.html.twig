@@ -2,7 +2,8 @@
 
 {% block title %}Log in!{% endblock %}
 {% block monTitre %}Login{% endblock %}
-{% block body %}
+
+{% block main2 %} 
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -35,7 +36,12 @@
     #}
 
     <button class="btn btn-lg btn-primary" type="submit">
-    s'identifier
+        Valider
     </button>
+     <button class="btn btn-lg btn-primary" type="submit">
+       <a href="{{ path('connect_google') }}">
+        Sign in with Google
+        </a>
+        </button>
 </form>
 {% endblock %}
