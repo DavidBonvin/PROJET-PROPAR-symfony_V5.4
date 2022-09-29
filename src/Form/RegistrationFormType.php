@@ -11,9 +11,11 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\EqualTo;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -24,6 +26,17 @@ class RegistrationFormType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email')
+            ->add('roles', CollectionType::class, [
+                'entry_type'   => ChoiceType::class,
+                'entry_options'  =>[
+                    'choices'  => [
+                        'EXPERT' => 'ROLE_ADMIN',
+                        'APPRENTI'     => 'ROLE_USER',
+                        'SENIOR'    => 'ROLE_USER',
+
+                    ],
+                ],
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
