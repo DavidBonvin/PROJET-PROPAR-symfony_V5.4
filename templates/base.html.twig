@@ -16,9 +16,8 @@
 	<body>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-3 px-1 bg-ligth position-fixed" id="sticky-sidebar">
-					<div
-						class="sidevarstatic">
+				<div class="col-3 px-0 bg-ligth position-fixed" id="sticky-sidebar">
+					<div class="sidevarstatic p-4">
 						{#Contenu du sidebar lateral#}
 						<img class="logo" src="{{asset('asset/img/logo.svg')}}" alt="">
 						<ul class="listLateral">
@@ -29,16 +28,16 @@
 					</div>
 				</div>
 				{#Contenu du 70% restent#}
-				<div class="col offset-3" id="main">
-					<nav class="navbar  " id="navbartop">
+				<div class="col offset-3 p-0 " id="main">
+					<nav class="navbar " id="navbartop">
 						<div class="container-fluid">
 							<a class="btn btn-primary " href="{{ path('app_login') }}" role="button">Se connecter</a>
 							
 							
 						</div>
 					</nav>
-					<div class="container">
-						<div class="row mt-4">
+					<div class="container" id="peremain2">
+						<div class="row p-4"  >
                             {% block main2 %} 
 			
 							
