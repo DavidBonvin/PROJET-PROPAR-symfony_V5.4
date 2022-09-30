@@ -30,15 +30,9 @@ class RegistrationFormType extends AbstractType
                 'entry_type'   => ChoiceType::class,
                 'entry_options'  =>[
                     'choices'  => [
-<<<<<<< HEAD
-                        'EXPERT' => 'ROLE_ADMIN',
-                        'APPRENTI'     => 'ROLE_USER',
-                        'SENIOR'    => 'ROLE_USER',
-=======
                         'EXPERT' => 'ROLE_EXPERT',
                         'APPRENTI'     => 'ROLE_APPRENTI',
                         'SENIOR'    => 'ROLE_SENIOR',
->>>>>>> c4a6d78e6609703f38ed55996ffc3cec2d3e73de
 
                     ],
                 ],
