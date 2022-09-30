@@ -11,9 +11,11 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\EqualTo;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -24,6 +26,18 @@ class RegistrationFormType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email')
+            ->add('roles', CollectionType::class, [
+                'entry_type'   => ChoiceType::class,
+
+                'entry_options'  => [
+                    'choices'  => [
+                        'EXPERT' => 'ROLE_EXPERT',
+                        'APPRENTI'     => 'ROLE_APPRENTI',
+                        'SENIOR'    => 'ROLE_SENIOR',
+
+                    ],
+                ],
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -32,27 +46,26 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('password' , RepeatedType::class, [
+            ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe et la confirmation doivent etre identique.',
                 'options' => ['attr' => ['class' => 'Votre mot de passe']],
                 'required' => true,
-                'first_options' => [ 
+                'first_options' => [
                     'label' => 'Mot de passe',
                     'attr'  => [
                         'placeholder' => 'Merci de saisir votre mot de passe'
                     ]
                 ],
-                'second_options' => [ 
+                'second_options' => [
                     'label' => 'Confirmez votre mot de passe',
                     'attr'  => [
                         'placeholder' => 'Merci de confirmer votre mot de passe'
                     ]
-                    ]
-    
+                ]
+
             ]);
-            
-        }
+    }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
