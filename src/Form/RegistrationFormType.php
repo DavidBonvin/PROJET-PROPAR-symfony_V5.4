@@ -31,9 +31,9 @@ class RegistrationFormType extends AbstractType
 
                 'entry_options'  => [
                     'choices'  => [
-                        'EXPERT' => 'EXPERT',
-                        'APPRENTI'     => 'APPRENTI',
-                        'SENIOR'    => 'SENIOR',
+                        'EXPERT' => 'ROLE_EXPERT',
+                        'APPRENTI'     => 'ROLE_APPRENTI',
+                        'SENIOR'    => 'ROLE_SENIOR',
 
                     ],
                 ],

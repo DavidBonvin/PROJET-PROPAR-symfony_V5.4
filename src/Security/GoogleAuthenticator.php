@@ -87,6 +87,7 @@ class GoogleAuthenticator extends OAuth2Authenticator
         $message = strtr($exception->getMessageKey(), $exception->getMessageData());
 
         return new Response($message, Response::HTTP_FORBIDDEN);
+        
     }
 
     //    public function start(Request $request, AuthenticationException $authException = null): Response

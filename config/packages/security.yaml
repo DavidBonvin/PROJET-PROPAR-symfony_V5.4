@@ -20,6 +20,7 @@ security:
             custom_authenticator:
                 - App\Security\GoogleAuthenticator
                 - App\Security\AuthAuthentificatorAuthenticator
+            
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -36,6 +37,9 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/expert, roles: [ROLE_EXPERT] }
+        - { path: ^/senior, roles: [ROLE_SENIOR, ROLE_EXPERT] }
+        - { path: ^/apprenti, roles: [ROLE_APPRENTI, ROLE_EXPERT] }
 
 when@test:
     security:
