@@ -6,6 +6,46 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
+<<<<<<< HEAD
+		<link rel="icon" type="image/x-con" href="{{asset('images/propar/Propar3.ico')}}">
+		<link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css"> {% block stylesheets %}{% endblock %}
+
+
+		</head>
+		<body>
+
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="{{path('operations')}}"><img src={{asset('images/propar/Propar3.ico')}} height="50"></a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item">
+							<a class="nav-link active" href="{{path('app_home')}}">Nos Services
+
+							</a>
+						</li>
+						{% if is_granted('ROLE_ADMIN')%}
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('admin_operation')}}">Administration</a>
+						</li>
+						{% endif %}
+
+						{% if not app.user %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('inscription')}}">Inscription</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_login')}}">Login</a>
+						</li>
+						 {% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_logout')}}">Logout</a>
+						</li>
+						{% endif %}
+						
+=======
 		<link
 		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
@@ -35,6 +75,7 @@
 							
 							
 						</div>
+>>>>>>> c4a6d78e6609703f38ed55996ffc3cec2d3e73de
 					</nav>
 					<div class="container" id="peremain2">
 						<div class="row p-4"  >
