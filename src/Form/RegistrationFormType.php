@@ -28,7 +28,7 @@ class RegistrationFormType extends AbstractType
             ->add('email')
             ->add('roles', CollectionType::class, [
                 'entry_type'   => ChoiceType::class,
-                'entry_options'  =>[
+                'entry_options'  => [
                     'choices'  => [
                         'EXPERT' => 'ROLE_EXPERT',
                         'APPRENTI'     => 'ROLE_APPRENTI',
