@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Log in!{% endblock %}
 {% block monTitre %}Login{% endblock %}
 
@@ -35,14 +36,13 @@
             </label>
         </div>
     #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary m-4" type="submit">
         Valider
     </button>
-     <button class="btn btn-lg btn-primary" type="submit">
-       <a href="{{ path('connect_google') }}">
-        Sign in with Google
-        </a>
-        </button>
+    <a class="btn btn-light" href="{{ path('connect_google') }}" role="button" type="submit">Connectez-vous avec <img  class="logo_google" src="{{asset('asset/img/logoogle.svg')}}" alt=""></a>
+     
+</div>
+
 </form>
 {% endblock %}
