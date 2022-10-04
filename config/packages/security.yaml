@@ -9,7 +9,7 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: uuid
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -35,19 +35,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-<<<<<<< HEAD
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/profile, roles: ROLE_USER }
-    # role_hierarchy:
-    # ROLE_EDITOR: ROLE_USER
-    # ROLE_ADMIN: ROLE_EDITOR 
-=======
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/expert, roles: [ROLE_EXPERT] }
         - { path: ^/senior, roles: [ROLE_SENIOR, ROLE_EXPERT] }
         - { path: ^/apprenti, roles: [ROLE_APPRENTI, ROLE_EXPERT] }
->>>>>>> c4a6d78e6609703f38ed55996ffc3cec2d3e73de
 
 when@test:
     security:
