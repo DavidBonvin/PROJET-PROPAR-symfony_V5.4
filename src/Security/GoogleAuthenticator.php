@@ -3,31 +3,36 @@
 namespace App\Security;
 
 use App\Entity\User;
-use League\OAuth2\Client\Provider\GoogleUser;
 use Doctrine\ORM\EntityManagerInterface;
-use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use League\OAuth2\Client\Provider\GoogleUser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 
 class GoogleAuthenticator extends OAuth2Authenticator
 {
+    use TargetPathTrait;
+    private UrlGeneratorInterface $urlGenerator;
     private ClientRegistry $clientRegistry;
     private EntityManagerInterface $entityManager;
     private RouterInterface $router;
 
-    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $entityManager, RouterInterface $router)
+    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $entityManager, RouterInterface $router, UrlGeneratorInterface $urlGenerator)
     {
         $this->clientRegistry = $clientRegistry;
         $this->entityManager = $entityManager;
         $this->router = $router;
+        $this->urlGenerator = $urlGenerator;
     }
 
     public function supports(Request $request): ?bool
@@ -72,22 +77,34 @@ class GoogleAuthenticator extends OAuth2Authenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+            return new RedirectResponse($targetPath);
+        }
 
-        // change "app_dashboard" to some route in your app
-        return new RedirectResponse(
-            $this->router->generate('app_home')
-        );
+        $user = $token->getUser();
 
-        // or, on success, let the request continue to be handled by the controller
-        //return null;
+        if (in_array("ROLE_EXPERT", $user->getRoles())) {
+
+            return new RedirectResponse($this->urlGenerator->generate('app_expert'));
+        } elseif (in_array("ROLE_SENIOR", $user->getRoles())) {
+
+            return new RedirectResponse($this->urlGenerator->generate('app_senior'));
+        } elseif (in_array("ROLE_APPRENTI", $user->getRoles())) {
+
+            return new RedirectResponse($this->urlGenerator->generate('app_apprenti'));
+        }
+
+        return new RedirectResponse($this->urlGenerator->generate('app_home'));
+        throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
+
+
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         $message = strtr($exception->getMessageKey(), $exception->getMessageData());
 
         return new Response($message, Response::HTTP_FORBIDDEN);
-        
     }
 
     //    public function start(Request $request, AuthenticationException $authException = null): Response

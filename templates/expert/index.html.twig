@@ -1,70 +1,39 @@
-{# {% extends 'base.html.twig' %} #}
+{# {% extends 'base.html.twig' %}
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Page Expert{% endblock %}
-		</title>
-		<link
-		rel="icon" type="image/x-con" href="{{asset('images/propar/Propar3.ico')}}">
-		{# <link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css"> {% block stylesheets %}{% endblock %} #}
+{% block title %}Hello ExpertController!{% endblock %}
 
-		<link
-		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> {% block stylesheets %}{% endblock %}
-		{#Link css #}
-		<link rel="stylesheet" href="{{asset('asset/css/style.css')}}">
-	</head>
+{% block main2 %}
+JE SUIS BIEN DANS LE CONTROLLER EXPERT
+{% endblock %} #}
+{% extends 'base.html.twig' %}
 
-	<body>
+{% block title %}Dashboard
+{% endblock %}
 
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-2 px-0 bg-ligth position-fixed" id="sticky-sidebar">
-					<div
-						class="sidevarstatic p-4">
-						{#Contenu du sidebar lateral#}
-						<img class="logo" src="{{asset('asset/img/logo.svg')}}" alt="">
-						<ul class="listLateral">
-							{# <li><a href="{{ path('app_home') }}" class="btn btn-primary  m-2" >Accueil</a></li> #}
-							<li><a href="{{ path('app_home') }}" class="btn btn-primary  m-2" >Tableau de Bord</a></li>
-							 <li><a href="{{ path('app_home') }}"class="btn btn-primary m-2">Ajouter une opération</a></li>
-							<li><a href="{{ path('app_home') }}"class="btn btn-primary m-2">Lister mes opérations</a></li>
-							<li><a href="{{ path('app_home') }}"class="btn btn-primary m-2">Liste des employés</a></li>
-							<li><a href="{{ path('app_home') }}"class="btn btn-primary m-2">Ajouter un employé</a></li>
-							<li><a href="{{ path('app_home') }}"class="btn btn-primary m-2">Modifier un employé</a></li>
-							<li><a href="{{ path('app_home') }}"class="btn btn-primary m-2">Chiffre  d'Affaire</a></li>
-						</ul>
-					</div>
-				</div>
-				{#Contenu du 70% restent#}
-				<div class="col offset-2 p-0 " id="main">
-					<nav class="navbar " id="navbartop">
-						<div class="container-fluid">
-						{% if not app.user %}
-							<a class="btn btn-primary " href="{{ path('app_login') }}" role="button">Se connecter</a>
-							<a class="btn btn-primary " href="{{ path('inscription') }}" role="button">Inscription</a>
-							{% else %}
-							<a class="btn btn-primary " href="{{ path('app_logout') }}" role="button">Déconnecter</a>
-						{% endif %}
-						</div>
-					</nav>
-					<div class="container" id="peremain2">
-						<div class="row p-3"> {# {% block main2 %}{% endblock %} #}
-                            {% block main2 %}JE SUIS BIEN DANS LE CONTROLLER EXPERT
-                            {% endblock %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-			{% block body %}{% endblock %}
-			{% block javascripts %}{% endblock %}
-			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
-	</body>
-	</html>
+
+{% block navbarlists %}
+			<li>
+			<a href="{{ path('app_home') }}">Ajouter une opération</a>
+			<br/>
+        <a href="{{ path('app_home') }}">Liste mes opérations</a>
+		<br/>
+        <a href="{{ path('app_home') }}">Liste des employés</a>
+		<br/>
+        <a href="{{ path('app_home') }}">Ajouter un employé</a>
+		<br/>
+        <a href="{{ path('app_home') }}">Modifier un employé</a>
+		<br/>
+        <a href="{{ path('app_home') }}">Ajouter commande client</a>
+		<br/>
+        <a href="{{ path('app_home') }}">Chiffre d'affaire</a>
+		</li>
+
+{% endblock %}
+
+{% block main2 %}
+
+	<div class="row">
+	JE SUIS BIEN DANS LE CONTROLLER EXPERT
+	</div>
+{% endblock %}
 
