@@ -13,11 +13,14 @@
 		{#Link css #}
 		<link rel="stylesheet" href="{{asset('asset/css/style.css')}}">
 	</head>
+
 	<body>
+
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-3 px-0 bg-ligth position-fixed" id="sticky-sidebar">
-					<div class="sidevarstatic p-4">
+				<div class="col-2 px-0 bg-ligth position-fixed" id="sticky-sidebar">
+					<div
+						class="sidevarstatic p-4">
 						{#Contenu du sidebar lateral#}
 						<img class="logo" src="{{asset('asset/img/logo.svg')}}" alt="">
 						<ul class="listLateral">
@@ -30,6 +33,7 @@
 			
 		
 				{#Contenu du 70% restent#}
+
 		<div class="col offset-3 p-0 " id="main">
 				<nav class="navbar " id="navbartop">
 				
@@ -46,6 +50,21 @@
 				</nav>
 
 					<div class="row p-4" id="peremain2">
+
+				<div class="col offset-3 p-0 " id="main">
+					<nav class="navbar " id="navbartop">
+						<div class="container-fluid">
+						<p></p>
+							<a class="btn btn-primary " href="{{ path('app_login') }}" role="button">Se connecter</a>
+							<a class="btn btn-primary " href="{{ path('inscription') }}" role="button">Inscription</a>
+							{% else %}
+							<a class="btn btn-primary " href="{{ path('app_logout') }}" role="button">Déconnecter</a>
+						{% endif %}
+						</div>
+					</nav>
+					<div class="container" id="peremain2">
+						<div class="row p-4"  >
+
                             {% block main2 %} 
 			
 							
