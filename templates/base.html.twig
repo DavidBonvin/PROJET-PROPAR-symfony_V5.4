@@ -21,13 +21,33 @@
 						{#Contenu du sidebar lateral#}
 						<img class="logo" src="{{asset('asset/img/logo.svg')}}" alt="">
 						<ul class="listLateral">
-							<li>
-								<a href="{{ path('app_home') }}">Accueil</a>
-							</li>
+							{% block navbarlists %} 
+			
+                            {% endblock %}				
 						</ul>
 					</div>
 				</div>
+			
+		
 				{#Contenu du 70% restent#}
+
+		<div class="col offset-3 p-0 " id="main">
+				<nav class="navbar " id="navbartop">
+				
+							{% block navbarbase %} 
+									{% if app.user %}
+									<a style="color: white; margin-left: 1%">
+										Connecté : {{ app.user.userIdentifier }} 
+									</a>
+										<a href="{{ path('app_logout') }}" style="margin-right: 1%">Déconnexion</a>
+									{% else %}
+										<a style="color: white; margin-left: 1%" href="{{ path('app_login') }}" role="button">Se connecter</a>
+									{% endif %}
+							{% endblock %}
+				</nav>
+
+					<div class="row p-4" id="peremain2">
+
 				<div class="col offset-3 p-0 " id="main">
 					<nav class="navbar " id="navbartop">
 						<div class="container-fluid">
@@ -39,16 +59,15 @@
 					</nav>
 					<div class="container" id="peremain2">
 						<div class="row p-4"  >
+
                             {% block main2 %} 
 			
 							
                             {% endblock %}
-						</div>
 					</div>
-				</div>
-			</div>
+					</div>
 		</div>
-		{% block body %}{% endblock %}
+</div>
 		{% block javascripts %}{% endblock %}
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
