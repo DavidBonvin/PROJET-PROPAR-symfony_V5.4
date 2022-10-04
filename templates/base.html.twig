@@ -22,7 +22,7 @@
 						<img class="logo" src="{{asset('asset/img/logo.svg')}}" alt="">
 						<ul class="listLateral">
 							<li>
-								<a href="#">Accueil</a>
+								<a href="{{ path('app_home') }}">Accueil</a>
 							</li>
 						</ul>
 					</div>
@@ -31,8 +31,10 @@
 				<div class="col offset-3 p-0 " id="main">
 					<nav class="navbar " id="navbartop">
 						<div class="container-fluid">
-							<a href=""></a>
-							<a class="btn btn-primary " href="#" role="button">Se connecter</a>
+						<p></p>
+							<a class="btn btn-primary " href="{{ path('app_login') }}" role="button">Se connecter</a>
+							
+							
 						</div>
 					</nav>
 					<div class="container" id="peremain2">
