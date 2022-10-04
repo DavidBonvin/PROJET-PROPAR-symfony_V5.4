@@ -30,12 +30,12 @@ class AuthAuthentificatorAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): Passport
     {
-        $uuid = $request->request->get('uuid', '');
+        $email = $request->request->get('email', '');
 
-        $request->getSession()->set(Security::LAST_USERNAME, $uuid);
+        $request->getSession()->set(Security::LAST_USERNAME, $email);
 
         return new Passport(
-            new UserBadge($uuid),
+            new UserBadge($email),
             new PasswordCredentials($request->request->get('password', '')),
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
@@ -56,15 +56,13 @@ class AuthAuthentificatorAuthenticator extends AbstractLoginFormAuthenticator
         if (in_array("ROLE_EXPERT", $user->getRoles())) {
 
             return new RedirectResponse($this->urlGenerator->generate('app_expert'));
-
         } elseif (in_array("ROLE_SENIOR", $user->getRoles())) {
 
             return new RedirectResponse($this->urlGenerator->generate('app_senior'));
-
         } elseif (in_array("ROLE_APPRENTI", $user->getRoles())) {
 
             return new RedirectResponse($this->urlGenerator->generate('app_apprenti'));
-        } 
+        }
 
         return new RedirectResponse($this->urlGenerator->generate('app_home'));
         throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);

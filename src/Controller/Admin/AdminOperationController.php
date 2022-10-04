@@ -30,7 +30,8 @@ class AdminOperationController extends AbstractController
      * @Route("/admin/operation/{id}", name="admin_operation_modification", methods="POST|GET")
      */
     public function modification(Operation $operation = null, Request $request, EntityManagerInterface $entityManager): Response
-    { {
+    {
+        {
             if (!$operation) {
                 $operation = new Operation();
             }
