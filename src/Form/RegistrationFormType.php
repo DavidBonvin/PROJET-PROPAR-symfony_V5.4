@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Mime\Message;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
@@ -15,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class RegistrationFormType extends AbstractType
@@ -26,17 +28,15 @@ class RegistrationFormType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email')
-            ->add('roles', CollectionType::class, [
-                'entry_type'   => ChoiceType::class,
-
-                'entry_options'  => [
-                    'choices'  => [
-                        'EXPERT' => 'EXPERT',
-                        'APPRENTI'     => 'APPRENTI',
-                        'SENIOR'    => 'SENIOR',
-
-                    ],
-                ],
+            ->add('roles', ChoiceType::class, [
+                'required' => false,
+                'multiple' => false,
+                'expanded' => false,
+                'choices'  => [
+                    'Expert' => "ROLE_EXPERT",
+                    'Senior' => "ROLE_SENIOR",
+                    'Apprenti' => "ROLE_APPRENTI"
+                ]
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -65,6 +65,17 @@ class RegistrationFormType extends AbstractType
                 ]
 
             ]);
+        $builder->get('roles')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($rolesArray) {
+
+                    return count($rolesArray) ? $rolesArray[0] : null;
+                },
+                function ($rolesString) {
+
+                    return [$rolesString];
+                }
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver): void
