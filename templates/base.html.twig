@@ -22,9 +22,10 @@
 						{#Contenu du sidebar lateral#}
 						<img class="logo" src="{{asset('asset/img/logo.svg')}}" alt="">
 						<ul class="listLateral">
-							<li>
-								<a href="{{ path('app_home') }}">Accueil</a>
-							</li>
+
+						{% block navbarlists %}
+						{% endblock %}
+							
 						</ul>
 					</div>
 				</div>
@@ -39,7 +40,7 @@
 									Connecté :
 									{{ app.user.userIdentifier }}
 								</a>
-								<a href="{{ path('app_logout') }}" style="margin-right: 1%">Déconnexion</a>
+								<a href="{{ path('app_logout') }}" type="button" class="btn btn-danger">Déconnexion</a>
 							{% else %}
 								<a style="color: white; margin-left: 1%" href="{{ path('app_login') }}" role="button">Se connecter</a>
 							{% endif %}
