@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commandes{% endblock %}
+
+{% block main2 %}
+
+<h3>Liste des commandes 
+
+{% if isStatut %}
+EnCours
+
+{% endif %}
+<br>
+<table class="table">
+            <thead>
+                  <tr>
+                        <th scope="col">Commande ID</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th> 
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Opération </th>
+                        <th scope="col">Prix </th>
+                        <th scope="col">Type_Operation </th>
+                        <th scope="col">Description </th>
+                        <th scope="col">Date </th>
+                        <th scope="col">Statut </th>
+                        
+            </thead>
+            <tbody>
+            {% for commande in commandes %}
+                  <tr>
+                        <th scope="col">{{ commande.id }}</th>
+                        <th scope="col">{{ commande.client.nom}}</th>
+                        <th scope="col">{{ commande.client.prenom}}</th>
+                        <th scope="col">{{ commande.client.adresse}}</th>
+                        <th scope="col">{{ commande.operation.nom}}</th>
+                        <th scope="col">{{ commande.operation.prix}}</th>
+                        <th scope="col">{{ commande.operation.typeoperation}}</th> </th>
+                        <th scope="col">{{ commande.operation.description}} </th>
+                        <th scope="col">{{ commande.date|date("d/m/Y") }} </th>
+                         <th scope="col">{{ commande.statut }} </th>
+                  </tr>
+                 {% endfor %} 
+            </tbody>
+      </table>
+</div>
+
+<a href="{{path("CommandesParStatut", {"Statut": "EnCours"})}}"> Listes des Commandes EnCours</a></h3>
+{% endblock %}

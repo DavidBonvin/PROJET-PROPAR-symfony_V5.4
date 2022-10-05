@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\OperationRepository;
+use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=OperationRepository::class)
+ * @ORM\Entity(repositoryClass=ClientRepository::class)
  */
-class Operation
+class Client
 {
     /**
      * @ORM\Id
@@ -25,27 +25,22 @@ class Operation
     private $nom;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Prenom;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $description;
+    private $Adresse;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $prix;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $type_operation;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $image;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="operation")
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client")
      */
     private $commandes;
 
@@ -71,50 +66,38 @@ class Operation
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->description;
+        return $this->Prenom;
     }
 
-    public function setDescription(?string $description): self
+    public function setPrenom(string $Prenom): self
     {
-        $this->description = $description;
+        $this->Prenom = $Prenom;
 
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getAdresse(): ?string
     {
-        return $this->prix;
+        return $this->Adresse;
     }
 
-    public function setPrix(float $prix): self
+    public function setAdresse(?string $Adresse): self
     {
-        $this->prix = $prix;
+        $this->Adresse = $Adresse;
 
         return $this;
     }
 
-    public function getTypeOperation(): ?string
+    public function getEmail(): ?string
     {
-        return $this->type_operation;
+        return $this->email;
     }
 
-    public function setTypeOperation(string $type_operation): self
+    public function setEmail(?string $email): self
     {
-        $this->type_operation = $type_operation;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
+        $this->email = $email;
 
         return $this;
     }
@@ -131,7 +114,7 @@ class Operation
     {
         if (!$this->commandes->contains($commande)) {
             $this->commandes[] = $commande;
-            $commande->setOperation($this);
+            $commande->setClient($this);
         }
 
         return $this;
@@ -141,8 +124,8 @@ class Operation
     {
         if ($this->commandes->removeElement($commande)) {
             // set the owning side to null (unless already changed)
-            if ($commande->getOperation() === $this) {
-                $commande->setOperation(null);
+            if ($commande->getClient() === $this) {
+                $commande->setClient(null);
             }
         }
 
