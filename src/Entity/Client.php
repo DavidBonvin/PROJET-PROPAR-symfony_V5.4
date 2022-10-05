@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\OperationRepository;
+use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=OperationRepository::class)
+ * @ORM\Entity(repositoryClass=ClientRepository::class)
  */
-class Operation
+class Client
 {
     /**
      * @ORM\Id
@@ -25,27 +25,27 @@ class Operation
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $description;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $prix;
+    private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $type_operation;
+    private $nomSociete;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image;
+    private $adresse;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="operation")
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client")
      */
     private $commandes;
 
@@ -71,50 +71,50 @@ class Operation
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->description;
+        return $this->prenom;
     }
 
-    public function setDescription(?string $description): self
+    public function setPrenom(string $prenom): self
     {
-        $this->description = $description;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getNomSociete(): ?string
     {
-        return $this->prix;
+        return $this->nomSociete;
     }
 
-    public function setPrix(float $prix): self
+    public function setNomSociete(string $nomSociete): self
     {
-        $this->prix = $prix;
+        $this->nomSociete = $nomSociete;
 
         return $this;
     }
 
-    public function getTypeOperation(): ?string
+    public function getAdresse(): ?string
     {
-        return $this->type_operation;
+        return $this->adresse;
     }
 
-    public function setTypeOperation(string $type_operation): self
+    public function setAdresse(string $adresse): self
     {
-        $this->type_operation = $type_operation;
+        $this->adresse = $adresse;
 
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getEmail(): ?string
     {
-        return $this->image;
+        return $this->email;
     }
 
-    public function setImage(string $image): self
+    public function setEmail(string $email): self
     {
-        $this->image = $image;
+        $this->email = $email;
 
         return $this;
     }
@@ -131,7 +131,7 @@ class Operation
     {
         if (!$this->commandes->contains($commande)) {
             $this->commandes[] = $commande;
-            $commande->setOperation($this);
+            $commande->setClient($this);
         }
 
         return $this;
@@ -141,8 +141,8 @@ class Operation
     {
         if ($this->commandes->removeElement($commande)) {
             // set the owning side to null (unless already changed)
-            if ($commande->getOperation() === $this) {
-                $commande->setOperation(null);
+            if ($commande->getClient() === $this) {
+                $commande->setClient(null);
             }
         }
 

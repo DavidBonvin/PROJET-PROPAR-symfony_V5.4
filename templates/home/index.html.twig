@@ -1,74 +1,83 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block main2 %}
 
 
+	<div class="col-6">
+		<h2>Liste d'operations en cours</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">nom de commande</th>
+					<th scope="col">date</th>
+					<th scope="col">statut</th>
+					<th scope="col">nom du client</th>
+					<th scope="col">type d' operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					{% for commandes in commandeEnCours %}
 
- {% block main2 %} 
-		<div class="col-6">
-      <h3>Liste d'operations en cours</h3>
-      <table class="table">
-            <thead>
-                  <tr>
-                         <th scope="col">ID</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Prenom</th>
-                        <th scope="col">Description</th>
-                  </tr>
-            </thead>
-            <tbody>
-                  <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>></td>
-                  </tr>
-                  <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>></td>
-                  </tr>
-                  <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>></td>
-                  </tr>
-            </tbody>
-      </table>
-</div>
-<div class="col-6">
-      <h3>Liste d'operations Terminées</h3>
-      <table class="table">
-            <thead>
-                  <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Prenom</th>
-                        <th scope="col">Description</th>
-                  </tr>
-            </thead>
-            <tbody>
-                  <tr>
-                        <th scope="row">1</th>
-                        <td>Legrand</td>
-                        <td>Lucie</td>
-                        <td>></td>
-                  </tr>
-                  <tr>
-                        <th scope="row">2</th>
-                        <td>Faure</td>
-                        <td>Pierre</td>
-                        <td>></td>
-                  </tr>
-                  <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Bernard julio</td>
-                       
-                        <td>></td>
-                  </tr>
-            </tbody>
-      </table>
-</div>	
+						<td>
+							{{commandes.nomCommande}}
+						</td>
+						<td>
+							{{ commandes.date|date("d/m/Y") }}</td>
+						<td>
+							{{commandes.statut}}
+						</td>
+						<td>
+							{{commandes.client.nom}}
+						</td>
+						<td>
+							{{commandes.operation.typeoperation}}
+						</td>
 
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-6">
+		<h2>Liste d'operations Terminées</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">nom de commande</th>
+					<th scope="col">date</th>
+					<th scope="col">statut</th>
+					<th scope="col">nom du client</th>
+					<th scope="col">type d' operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					{% for commandes in commandeTermine %}
+
+						<td>
+							{{commandes.nomCommande}}
+						</td>
+						<td>
+							{{ commandes.date|date("d/m/Y") }}</td>
+						<td>
+							{{commandes.statut}}
+						</td>
+						<td>
+							{{commandes.client.nom}}
+						</td>
+						<td>
+							{{commandes.operation.typeoperation}}
+						</td>
+
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}
