@@ -1,33 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
-{% block monTitre %}Inscription sur le site{% endblock %}
+{% block title %}Register
+{% endblock %}
+{% block monTitre %}Inscription sur le site
+{% endblock %}
 {% block navbarlists %}
 	<li>
-	<a href="{{ path('app_home') }}">Accueil</a>
+		<a href="{{ path('app_home') }}">Ajouter une opération</a>
+		<br/><br/>
+		<a href="{{ path('app_home') }}">Liste mes opérations</a>
+		<br/><br/>
+		<a href="{{ path('liste_employe') }}">Liste des employés</a>
+		<br/><br/>
+		<a href="{{ path('inscription') }}">Ajouter un employé</a>
+		<br/><br/>
+		<a href="{{ path('liste_employe') }}">Modifier un employé</a>
+		<br/><br/>
+		<a href="{{ path('app_home') }}">Ajouter commande client</a>
+		<br/><br/>
+		<a href="{{ path('app_home') }}">Chiffre d'affaire</a>
 	</li>
+
 {% endblock %}
 
-{% block main2 %} 
-<div class='cadreRegister'>
+{% block main2 %}
+	<div class='cadreRegister'>
 
-<h3>Ajouter un employé</h3>
-	{{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.nom)}}
-    {{ form_row(registrationForm.prenom)}}
-    {{ form_row(registrationForm.email)}}
-    {{ form_row(registrationForm.uuid,{
+		<h3>Ajouter un employé</h3>
+		{{ form_start(registrationForm) }}
+		{{ form_row(registrationForm.nom)}}
+		{{ form_row(registrationForm.prenom)}}
+		{{ form_row(registrationForm.email)}}
+		{{ form_row(registrationForm.uuid,{
             "attr":{"placeholder":"Saisir votre login"},
             "label":"Votre Login"
     })}}
-    {{ form_row(registrationForm.password, {
+		{{ form_row(registrationForm.password, {
             label: 'Password'
         })}}
-    {{ form_row(registrationForm.roles)}}
-    {{ form_row(registrationForm.agreeTerms) }}
-        <button type="submit" class="buttonValiderRegister" >Ajouter</button>
-    {{ form_end(registrationForm) }}
-</div>
+		{{ form_row(registrationForm.roles)}}
+		{{ form_row(registrationForm.agreeTerms) }}
+		<button type="submit" class="buttonValiderRegister">Ajouter</button>
+		{{ form_end(registrationForm) }}
+	</div>
 
 {% endblock %}
-

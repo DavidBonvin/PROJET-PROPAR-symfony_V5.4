@@ -1,15 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SeniorController!{% endblock %}
+{% block title %}Hello SeniorController!
+{% endblock %}
+{% block navbarlists %}
+	<li>
+		<a href="">Tableau de bord</a>
+	</li>
+	<li>
+		<a href="">Ajouter une opération</a>
+	</li>
+	<li>
+		<a href="">Liste mes opérations</a>
+	</li>
+{% endblock %}
 
 {% block main2 %}
-<div class="cadre403">
-<div class="cadre2">
-   <h3>ERREUR 403 </h3> 
+	<div class="cadre403">
+		<div class="cadre2">
+			<h3>ERREUR 403
+			</h3>
 
-   <p> VOUS N'AVEZ PAS LES DROITS !!</p>
+			<p>
+				VOUS N'AVEZ PAS LES DROITS !!</p>
 
- <button class='buttonValider' onclick="history.back()"  role="button">Retour</button>
-   </div>
-   </div>
+			<button class='buttonValider' onclick="history.back()" role="button">Retour</button>
+		</div>
+	</div>
 {% endblock %}
