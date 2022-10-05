@@ -9,7 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CommandeController extends AbstractController
 {
-    #[Route('/commandes', name: 'commandes')]
+     /**
+     * @Route("/commandes", name="commandes")
+     */
+ 
     public function index(CommandeRepository $repo): Response
     {
         $commandes = $repo->findAll();
@@ -18,8 +21,10 @@ class CommandeController extends AbstractController
             'isStatut'=>false
         ]);
     }
-
-    #[Route('/commandes/{Statut}', name: 'CommandesParStatut')]
+    /**
+     * @Route("/commandes/{Statut}", name="CommandesParStatut")
+     */
+    
     public function commandesEnCours(CommandeRepository $repo, $Statut): Response
     {
         $commandes = $repo->getCommandeParStatut($Statut);
