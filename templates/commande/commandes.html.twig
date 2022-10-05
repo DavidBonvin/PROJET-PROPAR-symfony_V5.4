@@ -1,49 +1,140 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commandes{% endblock %}
+{% block title %}Commandes
+{% endblock %}
 
 {% block main2 %}
+	<h3>Liste des commandes</h3>
+	<div class="row">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">CommandeID</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Prenom</th>
+					<th scope="col">Adresse</th>
+					<th scope="col">Opération
+					</th>
+					<th scope="col">Prix
+					</th>
+					<th scope="col">Type_Operation
+					</th>
+					<th scope="col">Description
+					</th>
+					<th scope="col">Date
+					</th>
+					<th scope="col">Statut
+					</th>
 
-<h3>Liste des commandes 
+				</tr>
+			</thead>
 
-{% if isStatut %}
-EnCours
-
-{% endif %}
-<br>
-<table class="table">
-            <thead>
-                  <tr>
-                        <th scope="col">Commande ID</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Prenom</th> 
-                        <th scope="col">Adresse</th>
-                        <th scope="col">Opération </th>
-                        <th scope="col">Prix </th>
-                        <th scope="col">Type_Operation </th>
-                        <th scope="col">Description </th>
-                        <th scope="col">Date </th>
-                        <th scope="col">Statut </th>
-                        
-            </thead>
-            <tbody>
-            {% for commande in commandes %}
-                  <tr>
-                        <th scope="col">{{ commande.id }}</th>
-                        <th scope="col">{{ commande.client.nom}}</th>
-                        <th scope="col">{{ commande.client.prenom}}</th>
-                        <th scope="col">{{ commande.client.adresse}}</th>
-                        <th scope="col">{{ commande.operation.nom}}</th>
-                        <th scope="col">{{ commande.operation.prix}}</th>
-                        <th scope="col">{{ commande.operation.typeoperation}}</th> </th>
-                        <th scope="col">{{ commande.operation.description}} </th>
-                        <th scope="col">{{ commande.date|date("d/m/Y") }} </th>
-                         <th scope="col">{{ commande.statut }} </th>
-                  </tr>
-                 {% endfor %} 
-            </tbody>
-      </table>
+			<tbody>
+				{% for commande in commandes %}
+					<tr>
+						<th scope="row">{{ commande.id }}</th>
+						<td>{{ commande.client.nom}}</td>
+						<td>{{ commande.client.prenom}}</td>
+						<td>{{ commande.client.adresse}}</td>
+						<td>{{ commande.operation.nom}}</td>
+						<td>{{ commande.operation.prix}}</td>
+						<td>{{ commande.operation.typeoperation}}</td>
+						<td>{{ commande.operation.description}}</td>
+						<td>{{ commande.date|date("d/m/Y") }}</td>
+						<td>{{ commande.statut }}</td>
+					</tr>
+				</tbody>
+			{% endfor %}
+		</table>
+	</div>
 </div>
+<div>
+	<h2>Liste des commandes en cours</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">CommandeID</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Prenom</th>
+					<th scope="col">Adresse</th>
+					<th scope="col">Opération
+					</th>
+					<th scope="col">Prix
+					</th>
+					<th scope="col">Type_Operation
+					</th>
+					<th scope="col">Description
+					</th>
+					<th scope="col">Date
+					</th>
+					<th scope="col">Statut
+					</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				{% for commandeEnCours in commandesEnCours %}
 
-<a href="{{path("CommandesParStatut", {"Statut": "EnCours"})}}"> Listes des Commandes EnCours</a></h3>
+					<th scope="row">
+						{{commandeEnCours.id}}
+					</th>
+                              <td>{{ commandeEnCours.operation.nom}}</td>
+						<td>{{ commandeEnCours.client.prenom}}</td>
+						<td>{{ commandeEnCours.client.adresse}}</td>
+						<td>{{ commandeEnCours.operation.nom}}</td>
+						<td>{{ commandeEnCours.operation.prix}}</td>
+						<td>{{ commandeEnCours.operation.typeoperation}}</td>
+						<td>{{ commandeEnCours.operation.description}}</td>
+						<td>{{ commandeEnCours.date|date("d/m/Y") }}</td>
+						<td>{{ commandeEnCours.statut }}</td>
+				</tr>
+			{% endfor %}
+
+		</tbody>
+	</table>
+</div>
+<h2>Liste des Commandes Terminées </h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">CommandeID</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Prenom</th>
+					<th scope="col">Adresse</th>
+					<th scope="col">Opération
+					</th>
+					<th scope="col">Prix
+					</th>
+					<th scope="col">Type_Operation
+					</th>
+					<th scope="col">Description
+					</th>
+					<th scope="col">Date
+					</th>
+					<th scope="col">Statut
+					</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				{% for commandeTermine in commandesTermines %}
+
+					<th scope="row">
+						{{commandeTermine.id}}
+					</th>
+                              <td>{{ commandeTermine.operation.nom}}</td>
+						<td>{{ commandeTermine.client.prenom}}</td>
+						<td>{{ commandeTermine.client.adresse}}</td>
+						<td>{{ commandeTermine.operation.nom}}</td>
+						<td>{{ commandeTermine.operation.prix}}</td>
+						<td>{{ commandeTermine.operation.typeoperation}}</td>
+						<td>{{ commandeTermine.operation.description}}</td>
+						<td>{{ commandeTermine.date|date("d/m/Y") }}</td>
+						<td>{{ commandeTermine.statut }}</td>
+				</tr>
+			{% endfor %}
+
+		</tbody>
+	</table>
+
 {% endblock %}

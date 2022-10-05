@@ -21,9 +21,9 @@ class CommandeRepository extends ServiceEntityRepository
         parent::__construct($registry, Commande::class);
     }
 
-    public function getCommandeParStatut($Statut){
+    public function getCommandeParStatut($propiete, $signe, $Statut){
         return $this->createQueryBuilder('c')
-           ->andWhere('c.Statut = :val')
+           ->andWhere('c.'.$propiete.' '. $signe.' :val')
            ->setParameter('val', $Statut)
            ->getQuery()
            ->getResult()
