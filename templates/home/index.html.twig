@@ -16,6 +16,7 @@
 					<th scope="col">statut</th>
 					<th scope="col">nom du client</th>
 					<th scope="col">type d' operation</th>
+					<th scope="col">nom de l'employé</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,6 +37,9 @@
 						<td>
 							{{commandes.operation.typeoperation}}
 						</td>
+						<td>
+							{{commandes.user.nom}}
+						</td>
 
 					</tr>
 				{% endfor %}
@@ -54,6 +58,7 @@
 					<th scope="col">statut</th>
 					<th scope="col">nom du client</th>
 					<th scope="col">type d' operation</th>
+					<th scope="col">nom de l'employé</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -73,6 +78,9 @@
 						</td>
 						<td>
 							{{commandes.operation.typeoperation}}
+						</td>
+						<td>
+							{{commandes.user.nom}}
 						</td>
 
 					</tr>
