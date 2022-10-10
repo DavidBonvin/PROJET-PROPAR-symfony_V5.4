@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Register
+{% endblock %}
+{% block monTitre %}Inscription sur le site
+{% endblock %}
+
+{% block navbarlists %}
+	<li class='mt-4'>
+		<a href="{{ path('app_apprenti') }}">Tableau de bord</a>
+	</li>
+	<li class='mt-4'>
+		<a href="">Ajouter une opération</a>
+	</li>
+	<li class='mt-4'>
+		<a href="">Liste mes opérations</a>
+	</li>
+	<li class='mt-4'>
+		<a href="{{ path('app_prise_commande_apprenti') }}">Ajouter commande client</a>
+	</li>
+{% endblock %}
+{% block main2 %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{message}}
+		</div>
+	{% endfor %}
+	<a class="btn btn-success" href="{{ path('app_registration_client_apprenti') }}">Ajout client</a>
+
+	{{ form_start(RegistrationCommandeType) }}
+	{{ form_row(RegistrationCommandeType.nomCommande)}}
+	{{ form_row(RegistrationCommandeType.date)}}
+	{{ form_row(RegistrationCommandeType.statut)}}
+	{{ form_row(RegistrationCommandeType.client)}}
+	{{ form_row(RegistrationCommandeType.operation)}}
+	{{ form_end(RegistrationCommandeType) }}
+{% endblock %}

@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dashboard
+
+{% block title %}Register
 {% endblock %}
-
-
+{% block monTitre %}Inscription client
+{% endblock %}
 {% block navbarlists %}
 	<li class='mt-4'>
 		<a href="{{ path('app_senior') }}">Tableau de bord</a>
@@ -20,8 +21,9 @@
 {% endblock %}
 
 {% block main2 %}
-
-	<div class="row">
-		JE SUIS SENIOR
-	</div>
-{% endblock %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{message}}
+		</div>
+	{% endfor %}
+	{{ form(RegistrationClientType) }}{% endblock %}

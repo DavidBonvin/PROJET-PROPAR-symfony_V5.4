@@ -20,14 +20,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class EmployeController extends AbstractController
 {
     /**
-     * @Route("/expert/employe", name="liste_employe")
+     * @Route("/expert/employe/liste", name="liste_employe")
      */
     public function index(UserRepository $repository): Response
     {
         $employe = $repository->findAll();
 
         return $this->render(
-            'employe/liste.html.twig',
+            'expert/liste.html.twig',
             array('employe' => $employe)
         );
     }
@@ -65,7 +65,7 @@ class EmployeController extends AbstractController
             $this->addFlash("success", "La modification a été efffectuée");
             return $this->redirectToRoute("liste_employe");
         }
-        return $this->render('employe/modificationEmploye.html.twig', [
+        return $this->render('expert/modificationEmploye.html.twig', [
             "employe" => $employe,
             "form" => $form->createView(),
             "isModification" => $employe->getId() !== null
