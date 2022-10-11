@@ -5,10 +5,12 @@
 {% block monTitre %}Inscription sur le site
 {% endblock %}
 {% block navbarlists %}
-	<li>
-		<a href="{{ path('app_home') }}">Ajouter une opération</a>
+	<lu>
+		<a href="{{ path('app_expert') }}">Tableau de bord</a>
 		<br/><br/>
-		<a href="{{ path('app_home') }}">Liste mes opérations</a>
+		<a href="{{ path('app_expert_operations') }}">Ajouter une opération</a>
+		<br/><br/>
+		<a href="{{ path('app_liste_operations') }}">Lister mes opérations</a>
 		<br/><br/>
 		<a href="{{ path('liste_employe') }}">Liste des employés</a>
 		<br/><br/>
@@ -19,7 +21,7 @@
 		<a href="{{ path('app_home') }}">Ajouter commande client</a>
 		<br/><br/>
 		<a href="{{ path('app_home') }}">Chiffre d'affaire</a>
-	</li>
+	</lu>
 
 {% endblock %}
 
