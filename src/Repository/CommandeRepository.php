@@ -39,28 +39,55 @@ class CommandeRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Commande[] Returns an array of Commande objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Commande[] Returns an array of Commande objects
+     */
+    public function findOperationUserEncours($id): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where("m.statut = ?1")
+            ->andWhere("m.user = ?2")
+            ->setParameter(1, "En cours")
+            ->setParameter(2, $id)
+            ->orderBy('m.date', 'DESC')
+            ->getQuery()
+            ->getResult();
+        // ->setMaxResults(10)
 
-//    public function findOneBySomeField($value): ?Commande
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    }
+    public function findUserCompteur($id)
+    {
+        return $this->createQueryBuilder('m')
+            ->where("m.statut = ?1")
+            ->andWhere("m.user = ?2")
+            ->setParameter(1, "En cours")
+            ->setParameter(2, $id)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByExampleField(): array
+    {
+        return $this
+            ->createQueryBuilder('Commande')
+            ->select('Commande.prix')
+            ->from('App\Entity\Commande', 'c')
+            ->from('App\Entity\Operation', 'o')
+            ->where("c.operationId = ?1")
+            ->andWhere("Commande.statut = ?2")
+            ->setParameter(1, "o.id")
+            ->setParameter(2, "En cours")
+            ->getQuery()
+            ->getResult();
+    }
+
+    //    public function findOneBySomeField($value): ?Commande
+    //    {
+    //        return $this->createQueryBuilder('c')
+    //            ->andWhere('c.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

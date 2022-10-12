@@ -7,7 +7,7 @@
 			{% endblock %}
 		</title>
 		<link
-		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		rel="icon" href="{{asset('asset/img/goute.png')}}">
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> {% block stylesheets %}{% endblock %}
 		{#Link css #}
@@ -21,41 +21,38 @@
 						class="sidevarstatic p-4">
 						{#Contenu du sidebar lateral#}
 						<img class="logo" src="{{asset('asset/img/logo.svg')}}" alt="">
-						<ul class="listLateral">
+						<ul class="listLateral"> {% block navbarlists %}{% endblock %}
 
-						{% block navbarlists %}
-						{% endblock %}
-							
-						</ul>
-					</div>
-				</div>
-
-
-				{#Contenu du 70% restent#}
-				<div class="col offset-3 p-0 " id="main">
-					<nav class="navbar " id="navbartop">
-						<div class="container-fluid">
-							{% if app.user %}
-								<a style="color: white; margin-left: 1%">
-									Connecté :
-									{{ app.user.userIdentifier }}
-								</a>
-								<a href="{{ path('app_logout') }}" type="button" class="btn btn-danger">Déconnexion</a>
-							{% else %}
-								<a style="color: white; margin-left: 1%" href="{{ path('app_login') }}" role="button">Se connecter</a>
-							{% endif %}
+							</ul>
 						</div>
-					</nav>
-					<div class="container" id="peremain2">
-						<div class="row p-4"> {% block main2 %}{% endblock %}
+					</div>
+
+
+					{#Contenu du 70% restent#}
+					<div class="col offset-3 p-0 " id="main">
+						<nav class="navbar " id="navbartop">
+							<div class="container-fluid">
+								{% if app.user %}
+									<a style="color: white; margin-left: 1%">
+										Connecté :
+										{{ app.user.userIdentifier }}
+									</a>
+									<a href="{{ path('app_logout') }}" type="button" class="btn btn-danger">Déconnexion</a>
+								{% else %}
+									<a style="color: white; margin-left: 1%" href="{{ path('app_login') }}" role="button">Se connecter</a>
+								{% endif %}
+							</div>
+						</nav>
+						<div class="container" id="peremain2">
+							<div class="row p-4"> {% block main2 %}{% endblock %}
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			{% block body %}{% endblock %}
-			{% block javascripts %}{% endblock %}
-			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
-		</body>
-	</html>
+				{% block body %}{% endblock %}
+				{% block javascripts %}{% endblock %}
+				<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+			</body>
+		</html>

@@ -27,7 +27,7 @@ class EmployeController extends AbstractController
         $employe = $repository->findAll();
 
         return $this->render(
-            'expert/liste.html.twig',
+            'expert/employeListe.html.twig',
             array('employe' => $employe)
         );
     }
@@ -65,10 +65,23 @@ class EmployeController extends AbstractController
             $this->addFlash("success", "La modification a été efffectuée");
             return $this->redirectToRoute("liste_employe");
         }
-        return $this->render('expert/modificationEmploye.html.twig', [
+        return $this->render('expert/employeModifierForm.html.twig', [
             "employe" => $employe,
             "form" => $form->createView(),
             "isModification" => $employe->getId() !== null
         ]);
+    }
+
+    /**
+     * @Route("/expert/employe/liste/modifier", name="liste_employe_modifier")
+     */
+    public function modifListe(UserRepository $repository): Response
+    {
+        $employe = $repository->findAll();
+
+        return $this->render(
+            'expert/employeModifier.html.twig',
+            array('employe' => $employe)
+        );
     }
 }

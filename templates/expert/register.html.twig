@@ -16,9 +16,9 @@
 		<br/><br/>
 		<a href="{{ path('inscription') }}">Ajouter un employé</a>
 		<br/><br/>
-		<a href="{{ path('liste_employe') }}">Modifier un employé</a>
+		<a href="{{ path('liste_employe_modifier') }}">Modifier un employé</a>
 		<br/><br/>
-		<a href="{{ path('app_home') }}">Ajouter commande client</a>
+		<a href="{{ path('app_prise_commande_expert') }}">Ajouter commande client</a>
 		<br/><br/>
 		<a href="{{ path('app_home') }}">Chiffre d'affaire</a>
 	</lu>
@@ -42,7 +42,7 @@
         })}}
 		{{ form_row(registrationForm.roles)}}
 		{{ form_row(registrationForm.agreeTerms) }}
-		<button type="submit" class="buttonValiderRegister">Ajouter</button>
+		<button type="submit" class="btn btn-primary">Ajouter</button>
 		{{ form_end(registrationForm) }}
 	</div>
 
