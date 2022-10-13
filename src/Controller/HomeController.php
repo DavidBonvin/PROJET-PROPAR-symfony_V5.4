@@ -25,7 +25,7 @@ class HomeController extends AbstractController
             null
         );
         $commandeEnTermine = $repository->findBy(
-            array('statut' => 'Termine'),
+            array('statut' => 'Terminer'),
             array('date' => 'desc'),
             null,
             null

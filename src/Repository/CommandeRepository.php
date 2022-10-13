@@ -80,7 +80,36 @@ class CommandeRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
+    public function chiffreAffaireEnCours()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('SUM(o.prix)')
+            ->join('c.operation', 'o')
+            ->where("c.statut = ?1")
+            ->setParameter(1, "En cours")
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+    public function chiffreAffaireTerminer()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('SUM(o.prix)')
+            ->join('c.operation', 'o')
+            ->where("c.statut = ?1")
+            ->setParameter(1, "Terminer")
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+    public function chiffreAffaireEnAttente()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('SUM(o.prix)')
+            ->join('c.operation', 'o')
+            ->where("c.statut = ?1")
+            ->setParameter(1, "En attente")
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
     //    public function findOneBySomeField($value): ?Commande
     //    {
     //        return $this->createQueryBuilder('c')
