@@ -1,16 +1,9 @@
-{# {% extends 'base.html.twig' %}
-
-{% block title %}Hello ExpertController!{% endblock %}
-
-{% block main2 %}
-JE SUIS BIEN DANS LE CONTROLLER EXPERT
-{% endblock %} #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Dashboard
+{% block title %}Register
 {% endblock %}
-
-
+{% block monTitre %}Inscription sur le site
+{% endblock %}
 {% block navbarlists %}
 	<lu>
 		<a href="{{ path('app_expert') }}">Tableau de bord</a>
@@ -29,48 +22,33 @@ JE SUIS BIEN DANS LE CONTROLLER EXPERT
 		<br/><br/>
 		<a href="{{ path('app_home') }}">Chiffre d'affaire</a>
 	</lu>
-
 {% endblock %}
-
 {% block main2 %}
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success">
 			{{message}}
 		</div>
 	{% endfor %}
-	<table>
-		<h2>Opérations en cours</h2>
+	<table class="table">
 		<thead>
 			<tr>
-				<th scope="col">nom de commande</th>
-				<th scope="col">date</th>
-				<th scope="col">statut</th>
-				<th scope="col">nom du client</th>
-				<th scope="col">type d' operation</th>
+				<th scope="col">ID</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Prenom</th>
+				<th scope="col">Email</th>
+				<th scope="col">Role</th>
 			</tr>
 		</thead>
 		<tbody>
-			{% for commandes in commandeProfil %}
+			{% for employe in employe %}
 				<tr>
-					<td>
-						{{commandes.nomCommande}}
-					</td>
-					<td>
-						{{ commandes.date|date("d/m/Y") }}</td>
-					<td>
-						{{commandes.statut}}
-					</td>
-					<td>
-						{{commandes.client.nom}}
-					</td>
-					<td>
-						{{commandes.operation.typeoperation}}
-					</td>
-					<td>
-						<a href="{{ path('expert_operations_terminer',{'id': commandes.id})}}" class="btn btn-primary">Terminer</a>
-					</td>
+					<th scope="row">{{ employe.id }}</th>
+					<td>{{ employe.nom }}</td>
+					<td>{{ employe.prenom }}</td>
+					<td>{{ employe.email }}</td>
+					<td>{{ employe.roles[0] }}</td>
 				</tr>
 			{% endfor %}
 		</tbody>
-	</table>
-{% endblock %}
+	</tbody>
+</table>{% endblock %}

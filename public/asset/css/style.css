@@ -8,35 +8,53 @@ body {
     background-color: #3D6A9E;
 }
 #main {
-    background-color: #ecf4ec;
+    background-color: #DEDEDE;
     height: 100vh;
-
 }
 #navbartop {
     background-color:#3D6A9E;
     height:10%;
     width: 100%;
-    
 }
 .logo {
   width: 100%;
-  padding: 10%;
-    
+  padding: 10%; 
 }
 .listLateral  {
     color: white;
     margin-top: 30%;
     margin-left: 10%;
-
 }
 .listLateral a {
     color: white;
-    
-
 }
 #peremain2 {
   height: 90%;
   overflow: auto;
-  
 }
-
+.cadre{
+    position: absolute;
+    width: 60%;
+    height: 530px;
+    left: 32%;
+    top: 17%;
+    background-color: #BABFC6;
+    border-radius: 15px;
+}
+h2{
+width: 348px;
+height: 10%;
+text-align: center;
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+color: #FFFFFF;
+} 
+.operations{
+    width: 723.67px;
+    height: 115.08px;
+    left: 552px;
+    background: #3D6A9E;
+    border-radius: 10px;
+}
