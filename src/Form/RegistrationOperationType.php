@@ -15,6 +15,7 @@ use Symfony\Component\Security\Core\Exception\DisabledException;
 
 class RegistrationOperationType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

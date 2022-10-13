@@ -3,25 +3,20 @@
 {% block title %}Dashboard
 {% endblock %}
 
-{% block navbarlists %}
-	<lu>
-		<a href="{{ path('app_expert') }}">Tableau de bord</a>
-		<br/><br/>
-		<a href="{{ path('app_expert_operations') }}">Ajouter une opération</a>
-		<br/><br/>
-		<a href="{{ path('app_liste_operations') }}">Lister mes opérations</a>
-		<br/><br/>
-		<a href="{{ path('liste_employe') }}">Liste des employés</a>
-		<br/><br/>
-		<a href="{{ path('inscription') }}">Ajouter un employé</a>
-		<br/><br/>
-		<a href="{{ path('liste_employe_modifier') }}">Modifier un employé</a>
-		<br/><br/>
-		<a href="{{ path('app_prise_commande_expert') }}">Ajouter commande client</a>
-		<br/><br/>
-		<a href="{{ path('app_chiffre_affaire') }}">Chiffre d'affaire</a>
-	</lu>
 
+{% block navbarlists %}
+	<li class='mt-4'>
+		<a href="{{ path('app_senior') }}">Tableau de bord</a>
+	</li>
+	<li class='mt-4'>
+		<a href="{{ path('app_senior_operations') }}">Ajouter une opération</a>
+	</li>
+	<li class='mt-4'>
+		<a href="{{ path('app_liste_operations_senior') }}">Liste mes opérations</a>
+	</li>
+	<li class='mt-4'>
+		<a href="{{ path('app_prise_commande') }}">Ajouter commande client</a>
+	</li>
 {% endblock %}
 
 {% block main2 %}

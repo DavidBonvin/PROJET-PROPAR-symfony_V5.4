@@ -3,19 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\Commande;
+use App\Entity\Operation;
 use App\Repository\CommandeRepository;
 use App\Form\RegistrationOperationType;
+use App\Repository\OperationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Form\RegistrationOperationTerminerType;
-use App\Repository\OperationRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ExpertController extends AbstractController
 {
-
     /**
      * @Route("/expert", name="app_expert")
      */
@@ -44,7 +45,6 @@ class ExpertController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/expert/operations/{id}", name="expert_operations", methods="POST|GET")
      */
@@ -53,37 +53,25 @@ class ExpertController extends AbstractController
         if (!$commandes) {
             $commandes = new Commande();
         }
+        $user = $this->getUser();
+        $compteurCommande = $repository->findUserCompteur($this->getUser());
+        $compteurCommande = count($compteurCommande);
 
-        $form = $this->createForm(RegistrationOperationType::class, $commandes);
-        $form->handleRequest($request);
-
-        // $test = $repository->findByExampleField();
-
-
-        $sql = "SELECT sum(prix) 
-        FROM commande c
-        inner join operation o on c.operation_id = o.id
-        WHERE c.statut = 'En cours'";
-
-        $stmt = $entityManager->createQuery($sql);
-        $result = $stmt->getResult();
-
-        $compteurExpert = $repository->findUserCompteur($this->getUser());
-        if (count($compteurExpert) < 5) {
-            if ($form->isSubmitted() && $form->isValid()) {
-                $entityManager->persist($commandes);
-                $entityManager->flush();
-                $this->addFlash("success", "La commande a bien été comfirmé");
-                return $this->redirectToRoute("app_expert");
-            }
+        if ($compteurCommande < 5) {
+            $commandes->setUser($user);
+            $commandes->setStatut("En cours");
+            $entityManager->persist($commandes);
+            $entityManager->flush();
+            $this->addFlash("success", "La commande a bien été confirmé");
+            return $this->redirectToRoute("app_expert_operations");
         } else {
             $this->addFlash("wrong", "Vous avez atteint le nombre maximum d'operations ! veuillez terminer une opération afin de pouvoir en traiter une nouvelle.");
             return $this->redirectToRoute("app_expert_operations");
         }
+
         return $this->render('expert/operationAjoutCommande.html.twig', [
             "commande" => $commandes,
-            "form" => $form->createView(),
-            "user" => $result
+            "user" => $commandes
         ]);
     }
 
@@ -106,23 +94,41 @@ class ExpertController extends AbstractController
     /**
      * @Route("/expert{id}", name="expert_operations_terminer", methods="POST|GET")
      */
-    public function terminerOperation(Commande $commandes = null, Request $request, EntityManagerInterface $entityManager): Response
+    public function terminerOperation(CommandeRepository $repository, Commande $commandes = null, Request $request, EntityManagerInterface $entityManager): Response
     { {
             if (!$commandes) {
                 $commandes = new Commande();
             }
         }
-        $form = $this->createForm(RegistrationOperationTerminerType::class, $commandes);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($commandes);
-            $entityManager->flush();
-            $this->addFlash("success", "La commande a bien été traité");
-            return $this->redirectToRoute("app_expert");
-        }
+        $user = $this->getUser();
+        $compteurCommande = $repository->findUserCompteur($this->getUser());
+        $compteurCommande = count($compteurCommande);
+
+        $commandes->setUser($user);
+        $commandes->setStatut("Terminer");
+        $entityManager->persist($commandes);
+        $entityManager->flush();
+        $this->addFlash("success", "La commande a bien été traité");
+        return $this->redirectToRoute("app_expert");
+
         return $this->render('expert/operationTermineCommande.html.twig', [
             "commande" => $commandes,
-            "form" => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/expert/chiffre/affaire", name="app_chiffre_affaire")
+     */
+    public function index(CommandeRepository $repository): Response
+    {
+        $chiffreAffaireEnCours = $repository->chiffreAffaireEnCours();
+        $chiffreAffaireTerminer = $repository->chiffreAffaireTerminer();
+        $chiffreAffaireEnAttente = $repository->chiffreAffaireEnAttente();
+
+        return $this->render('expert/chiffreAffaire.html.twig', [
+            'chiffreAffaireEnCours' => $chiffreAffaireEnCours,
+            'chiffreAffaireTerminer' => $chiffreAffaireTerminer,
+            'chiffreAffaireEnAttente' => $chiffreAffaireEnAttente
         ]);
     }
 }

@@ -9,10 +9,10 @@
 		<a href="{{ path('app_senior') }}">Tableau de bord</a>
 	</li>
 	<li class='mt-4'>
-		<a href="">Ajouter une opération</a>
+		<a href="{{ path('app_senior_operations') }}">Ajouter une opération</a>
 	</li>
 	<li class='mt-4'>
-		<a href="">Liste mes opérations</a>
+		<a href="{{ path('app_liste_operations_senior') }}">Liste mes opérations</a>
 	</li>
 	<li class='mt-4'>
 		<a href="{{ path('app_prise_commande') }}">Ajouter commande client</a>
@@ -20,8 +20,47 @@
 {% endblock %}
 
 {% block main2 %}
-
-	<div class="row">
-		JE SUIS SENIOR
-	</div>
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{message}}
+		</div>
+	{% endfor %}
+	<table>
+		<h2>Opérations en cours</h2>
+		<thead>
+			<tr>
+				<th scope="col">nom de commande</th>
+				<th scope="col">date</th>
+				<th scope="col">statut</th>
+				<th scope="col">nom du client</th>
+				<th scope="col">type d' operation</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for commandes in commandeProfil %}
+				<tr>
+					<td>
+						{{commandes.nomCommande}}
+					</td>
+					<td>
+						{{ commandes.date|date("d/m/Y") }}</td>
+					<td>
+						{{commandes.statut}}
+					</td>
+					<td>
+						{{commandes.client.nom}}
+					</td>
+					<td>
+						{{commandes.operation.typeoperation}}
+					</td>
+					<td>
+						<form method="post" class="col" action="{{path('senior_operations_terminer',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment terminer la commande ?');">
+							<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ commandes.id)}}">
+							<input type="submit" class="btn btn-success" value="Terminer">
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}
