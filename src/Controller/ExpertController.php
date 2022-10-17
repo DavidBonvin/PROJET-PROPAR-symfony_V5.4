@@ -3,14 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Commande;
-use App\Entity\Operation;
 use App\Repository\CommandeRepository;
-use App\Form\RegistrationOperationType;
-use App\Repository\OperationRepository;
+use App\Service\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Form\RegistrationOperationTerminerType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -94,26 +91,29 @@ class ExpertController extends AbstractController
     /**
      * @Route("/expert{id}", name="expert_operations_terminer", methods="POST|GET")
      */
-    public function terminerOperation(CommandeRepository $repository, Commande $commandes = null, Request $request, EntityManagerInterface $entityManager): Response
+    public function terminerOperation(MailerService $mailer, CommandeRepository $repository, Commande $commandes = null, Request $request, EntityManagerInterface $entityManager): Response
     { {
             if (!$commandes) {
                 $commandes = new Commande();
             }
         }
-        $user = $this->getUser();
+
         $compteurCommande = $repository->findUserCompteur($this->getUser());
         $compteurCommande = count($compteurCommande);
 
-        $commandes->setUser($user);
+        $commandes->setUser($this->getUser());
         $commandes->setStatut("Terminer");
         $entityManager->persist($commandes);
         $entityManager->flush();
+        $mailer->sendEmail();
+        // Ajout de l'envoi email au client pour confirmer la commande terminer et de la facture en piece jointe 
+        // <<<<<<<<<<<<<<
         $this->addFlash("success", "La commande a bien été traité");
         return $this->redirectToRoute("app_expert");
 
-        return $this->render('expert/operationTermineCommande.html.twig', [
-            "commande" => $commandes,
-        ]);
+        // return $this->render('expert/operationTermineCommande.html.twig', [
+        //     "commande" => $commandes,
+        // ]);
     }
 
     /**

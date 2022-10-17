@@ -25,38 +25,32 @@
 {% endblock %}
 
 {% block main2 %}
-	<div class="cadre">
+	<div class="cadre col-10 row p-4">
 		<table>
 			<h2>Lister mes opérations</h2>
-			<thead>
-				<tr>
-					<th scope="col">nom de commande</th>
-					<th scope="col">date</th>
-					<th scope="col">statut</th>
-					<th scope="col">nom du client</th>
-					<th scope="col">type d' operation</th>
-				</tr>
-			</thead>
-			<tbody class="operations">
-				{% for commandes in commandeProfil %}
-					<tr>
-						<td>
-							{{commandes.nomCommande}}
-						</td>
-						<td>
-							{{ commandes.date|date("d/m/Y") }}</td>
-						<td>
-							{{commandes.statut}}
-						</td>
-						<td>
-							{{commandes.client.nom}}
-						</td>
-						<td>
-							{{commandes.operation.typeoperation}}
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
+
+			<th scope="col">nom de commande</th>
+			<th scope="col">date</th>
+			<th scope="col">statut</th>
+			<th scope="col">nom du client</th>
+			<th scope="col">type d' operation</th>
+
+			{% for commandes in commandeProfil %}
+				<div class="parent">
+					<div class="div1">
+						{{commandes.nomCommande}}
+						{{ commandes.date|date("d/m/Y") }}
+						{# format_datetime('full', 'none', locale='fr') #}
+						{{commandes.statut}}
+						{{commandes.client.nom}}
+						{{commandes.operation.typeoperation}}
+
+						{% if commandes.statut == "Terminer" %}
+							<a href="{{path('afficherCommande',{'id':commandes.id})}}">PDF</a>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
 		</table>
 	</div>
 {% endblock %}
