@@ -4,37 +4,40 @@
 {% endblock %}
 
 {% block main2 %}
-	<div class="col-6">
-		<h2>Liste d'operations en cours</h2>
+<div class="row p-4 mx-auto">
+	<div class="col-12">
+		<h3>Liste d'operations en cours</h3>
+		
 		<table class="table">
 			<thead>
-				<tr>
-					<th scope="col">nom de commande</th>
-					<th scope="col">date</th>
-					<th scope="col">statut</th>
-					<th scope="col">nom du client</th>
-					<th scope="col">type d' operation</th>
-					<th scope="col">nom de l'employé</th>
+				<tr class="tr-tableau">
+					<th scope="col">Nom de commande</th>
+					<th scope="col">Date</th>
+					<th scope="col">Statut</th>
+					<th scope="col">Nom du client</th>
+					<th scope="col">Type d' operation</th>
+					<th scope="col">Nom de l'employé</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					{% for commandes in commandeEnCours %}
-						<td>
+				{% for commandes in commandeEnCours %}
+					<tr class="table-secondary">
+						<td >
 							{{commandes.nomCommande}}
 						</td>
-						<td>
-							{{ commandes.date|date("d/m/Y") }}</td>
-						<td>
-							{{commandes.statut}}
+						<td >
+							{{ commandes.date|date("d/m/Y") }}
 						</td>
-						<td>
+						<td >
+							{{commandes.statut}}
+						</td >
+						<td >
 							{{commandes.client.nom}}
 						</td>
-						<td>
+						<td >
 							{{commandes.operation.typeoperation}}
 						</td>
-						<td>
+						<td >
 							{{commandes.user.nom|default('')}}
 						</td>
 					</tr>
@@ -43,22 +46,24 @@
 		</table>
 	</div>
 
-	<div class="col-6">
-		<h2>Liste d'operations Terminées</h2>
+	<div class="col-12">
+		<h3>Liste d'operations Terminées</h3>
+		<br>
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">nom de commande</th>
-					<th scope="col">date</th>
-					<th scope="col">statut</th>
-					<th scope="col">nom du client</th>
-					<th scope="col">type d' operation</th>
-					<th scope="col">nom de l'employé</th>
+					<th scope="col">Nom de commande</th>
+					<th scope="col">Date</th>
+					<th scope="col">Statut</th>
+					<th scope="col">Nom du client</th>
+					<th scope="col">Type d' operation</th>
+					<th scope="col">Nom de l'employé</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					{% for commandes in commandeTermine %}
+			{% for commandes in commandeTermine %}
+				<tr class="table-secondary" >
+					
 						<td>
 							{{commandes.nomCommande}}
 						</td>
@@ -81,4 +86,5 @@
 			</tbody>
 		</table>
 	</div>
+</div>
 {% endblock %}

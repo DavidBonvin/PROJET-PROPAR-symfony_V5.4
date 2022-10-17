@@ -33,6 +33,7 @@ JE SUIS BIEN DANS LE CONTROLLER EXPERT
 {% endblock %}
 
 {% block main2 %}
+<div class="row p-4 mx-auto">
 	<div class="cadre col-10 row p-4">
 		{% for message in app.flashes('success') %}
 			<div class=" alert alert-success">
@@ -67,4 +68,5 @@ JE SUIS BIEN DANS LE CONTROLLER EXPERT
 			{% endfor %}
 		</table>
 	</div>
+</div>
 {% endblock %}

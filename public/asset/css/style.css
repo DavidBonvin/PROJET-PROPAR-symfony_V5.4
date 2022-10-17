@@ -44,14 +44,14 @@ body {
     border-radius: 15px;
 }
 h2{
-width: 348px;
-height: 10%;
+/* width: 348px; */
+
 text-align: center;
 font-family: 'Outfit';
 font-style: normal;
-font-weight: 400;
-font-size: 40px;
-color: #FFFFFF;
+/* font-weight: 400; */
+/* font-size: 40px; */
+color:#3d6a9e;
 } 
 .operations{
     width: 723.67px;
@@ -72,5 +72,10 @@ grid-row-gap: 0px;
 }
 
 .div1 { grid-area: 1 / 1 / 2 / 6; }
+
+.tr-tableau{
+    background-color: #3d6a9e;
+    color: white;
+}
 
 

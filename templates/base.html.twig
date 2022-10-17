@@ -43,12 +43,13 @@
 							</div>
 						</nav>
 						<div class="container" id="peremain2">
-							<div class="row p-4 mx-auto"> {% block main2 %}{% endblock %}
-								</div>
-							</div>
+							{% block main2 %}
+								<div class="row p-4 mx-auto"></div>
+							{% endblock %}
 						</div>
 					</div>
 				</div>
-				{% block javascripts %}{% endblock %}
-			</body>
-		</html>
+			</div>
+			{% block javascripts %}{% endblock %}
+		</body>
+	</html>

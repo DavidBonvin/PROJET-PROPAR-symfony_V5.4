@@ -26,29 +26,30 @@
 
 {% endblock %}
 {% block main2 %}
+	<div class="row p-4 mx-auto">
 
-	{% for message in app.flashes('success') %}
-		<div class="alert alert-success">
-			{{message}}
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{message}}
+			</div>
+		{% endfor %}
+
+
+		{{ form_start(RegistrationClientType) }}
+		{{ form_row(RegistrationClientType.nom)}}
+		{{ form_row(RegistrationClientType.prenom)}}
+		{{ form_row(RegistrationClientType.nomSociete)}}
+		{{ form_row(RegistrationClientType.email)}}
+		{{ form_row(RegistrationClientType.adresse)}}
+
+
+		<div id="resultat">
+			<dl id="ulResultat"><!-- Nous allons afficher un retour en jQuery au visiteur --></dl>
+
 		</div>
-	{% endfor %}
 
-
-	{{ form_start(RegistrationClientType) }}
-	{{ form_row(RegistrationClientType.nom)}}
-	{{ form_row(RegistrationClientType.prenom)}}
-	{{ form_row(RegistrationClientType.nomSociete)}}
-	{{ form_row(RegistrationClientType.email)}}
-	{{ form_row(RegistrationClientType.adresse)}}
-
-
-	<div id="resultat">
-		<dl id="ulResultat"><!-- Nous allons afficher un retour en jQuery au visiteur --></dl>
-
-	</div>
-
-	<script>
-		// lorsque le document est prêt, la fonction que nous lui donnons est exécutée == callback
+		<script>
+			// lorsque le document est prêt, la fonction que nous lui donnons est exécutée == callback
 $(document).ready(function () { // à cet élément, écouter cet événement ; mais cet événement va à l'ensemble du document afin qu'il ne disparaisse pas
 $(document).on('click', '.aldy', function (event) {
 
@@ -97,12 +98,13 @@ console.log('error');
 });
 });
 });
-	</script>
+		</script>
 
 
-	<input type="submit" id="submit" value="Enregistrer" class="btn btn-primary mx-auto"/>
+		<input type="submit" id="submit" value="Enregistrer" class="btn btn-primary mx-auto"/>
 
-	{{ form_end(RegistrationClientType) }}
+		{{ form_end(RegistrationClientType) }}
+	</div>
 
 {% endblock %}
 

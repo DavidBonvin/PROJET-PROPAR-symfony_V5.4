@@ -21,9 +21,12 @@
 {% endblock %}
 
 {% block main2 %}
+<div class="row p-4 mx-auto">
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success">
 			{{message}}
 		</div>
 	{% endfor %}
-	{{ form(RegistrationClientType) }}{% endblock %}
+	{{ form(RegistrationClientType) }}
+</div>	
+{% endblock %}
