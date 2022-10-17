@@ -39,28 +39,31 @@ class OperationRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Operation[] Returns an array of Operation objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('o.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Operation
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    /**
+    //      * @return Operation[] Returns an array of Operation objects
+    //      */
+    //     public function findByExampleField(): array
+    //     {
+    //         $var = $this->getEntityManager()
+    //             ->createQuery(
+    //                 "SELECT sum(prix)
+    //                 FROM App\Entity\Commande as c
+    //                 LEFT JOIN App\Entity\Operation as o 
+    //                 WITH c.operationId = o.id
+    //                 WHERE c.statut = 'En cours'"
+    //             )
+    //             ->getResult();
+    //         return $var;
+    //     }
+
+    //    public function findOneBySomeField($value): ?Operation
+    //    {
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

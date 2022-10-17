@@ -23,7 +23,6 @@ class RegistrationCommandeType extends AbstractType
             ->add('date')
             ->add('statut', TextType::class, [
                 'data' => 'En attente',
-
             ])
             ->add('operation', EntityType::class, [
                 'class' => Operation::class,

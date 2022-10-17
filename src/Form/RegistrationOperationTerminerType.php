@@ -11,18 +11,16 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Security\Core\Exception\DisabledException;
 
-class RegistrationOperationType extends AbstractType
+class RegistrationOperationTerminerType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('nomCommande')
             ->add('date')
             ->add('statut', TextType::class, [
-                'data' => 'En cours',
+                'data' => 'Terminer',
             ])
             ->add('client', EntityType::class, [
                 'class' => Client::class,
