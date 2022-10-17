@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,7 +19,7 @@ class RegistrationClientType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('nomSociete')
-            ->add('adresse' )    
+            ->add('adresse', SearchType::class )    
             ->add('email')
             
         ;
