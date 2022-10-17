@@ -19,10 +19,8 @@ class RegistrationClientType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('nomSociete')
-            ->add('adresse', SearchType::class )    
-            ->add('email')
-            
-        ;
+            ->add('adresse')
+            ->add('email');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

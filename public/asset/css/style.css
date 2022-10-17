@@ -53,12 +53,24 @@ font-weight: 400;
 font-size: 40px;
 color: #FFFFFF;
 } 
-/* .operations{
+.operations{
     width: 723.67px;
     height: 115.08px;
     background: #3D6A9E;
     border-radius: 10px;
 }
-#ulResultat{
-    margin-top: none!important;
+.parent {
+
+background: #3D6A9E;
+border-radius: 10px;
+margin-bottom: 2%;
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+
+grid-column-gap: 0px;
+grid-row-gap: 0px;
 }
+
+.div1 { grid-area: 1 / 1 / 2 / 6; }
+
+
