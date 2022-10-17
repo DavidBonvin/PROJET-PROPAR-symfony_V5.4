@@ -8,35 +8,69 @@ body {
     background-color: #3D6A9E;
 }
 #main {
-    background-color: #ecf4ec;
+    background-color: #DEDEDE;
     height: 100vh;
-
 }
 #navbartop {
     background-color:#3D6A9E;
     height:10%;
     width: 100%;
-    
 }
 .logo {
   width: 100%;
-  padding: 10%;
-    
+  padding: 10%; 
 }
 .listLateral  {
     color: white;
-    margin-top: 30%;
-    margin-left: 10%;
-
-}
-.listLateral a {
-    color: white;
     
-
+}
+.listLateral a  {
+   
+    color: white;
 }
 #peremain2 {
   height: 90%;
   overflow: auto;
-  
+  background-color: white;
 }
+.cadre{
+    /* position: absolute;
+    width: 60%;
+    height: 530px;
+    left: 32%;
+    top: 17%; */
+    background: rgb(220, 220, 220);
+    margin-left: 10%;
+    border-radius: 15px;
+}
+h2{
+width: 348px;
+height: 10%;
+text-align: center;
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+color: #FFFFFF;
+} 
+.operations{
+    width: 723.67px;
+    height: 115.08px;
+    background: #3D6A9E;
+    border-radius: 10px;
+}
+.parent {
+
+background: #3D6A9E;
+border-radius: 10px;
+margin-bottom: 2%;
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.div1 { grid-area: 1 / 1 / 2 / 6; }
+
 

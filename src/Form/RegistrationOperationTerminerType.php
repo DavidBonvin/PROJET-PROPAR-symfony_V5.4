@@ -11,10 +11,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-
-class RegistrationCommandeType extends AbstractType
+class RegistrationOperationTerminerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -22,24 +20,22 @@ class RegistrationCommandeType extends AbstractType
             ->add('nomCommande')
             ->add('date')
             ->add('statut', TextType::class, [
-                'data' => 'En attente',
-            ])
-            ->add('operation', EntityType::class, [
-                'class' => Operation::class,
-                'choice_label' => 'type_operation',
-                'required' => false
+                'data' => 'Terminer',
             ])
             ->add('client', EntityType::class, [
                 'class' => Client::class,
                 'choice_label' => 'email',
                 'required' => false
             ])
-            // ->add('user', EntityType::class, [
-            //     'class' => User::class,
-            //     'choice_label' => 'nom',
-            // ])
-
-            ->add('Enregistrer', SubmitType::class);
+            ->add('operation', EntityType::class, [
+                'class' => Operation::class,
+                'choice_label' => 'type_operation',
+                'required' => false
+            ])
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'nom',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -5,22 +5,23 @@
 {% block monTitre %}Inscription sur le site
 {% endblock %}
 {% block navbarlists %}
-	<li>
-		<a href="{{ path('app_home') }}">Ajouter une opération</a>
+	<lu>
+		<a href="{{ path('app_expert') }}">Tableau de bord</a>
 		<br/><br/>
-		<a href="{{ path('app_home') }}">Liste mes opérations</a>
+		<a href="{{ path('app_expert_operations') }}">Ajouter une opération</a>
+		<br/><br/>
+		<a href="{{ path('app_liste_operations') }}">Lister mes opérations</a>
 		<br/><br/>
 		<a href="{{ path('liste_employe') }}">Liste des employés</a>
 		<br/><br/>
 		<a href="{{ path('inscription') }}">Ajouter un employé</a>
 		<br/><br/>
-		<a href="{{ path('liste_employe') }}">Modifier un employé</a>
+		<a href="{{ path('liste_employe_modifier') }}">Modifier un employé</a>
 		<br/><br/>
-		<a href="{{ path('app_home') }}">Ajouter commande client</a>
+		<a href="{{ path('app_prise_commande_expert') }}">Ajouter commande client</a>
 		<br/><br/>
-		<a href="{{ path('app_home') }}">Chiffre d'affaire</a>
-	</li>
-
+		<a href="{{ path('app_chiffre_affaire') }}">Chiffre d'affaire</a>
+	</lu>
 {% endblock %}
 {% block main2 %}
 	{% for message in app.flashes('success') %}
@@ -45,22 +46,9 @@
 					<td>{{ employe.nom }}</td>
 					<td>{{ employe.prenom }}</td>
 					<td>{{ employe.email }}</td>
-					{% for employe in employe.roles %}
-						<td>{{ employe }}</td>
-					{% endfor %}
-					<td>
-						<a href="{{path('expert_modifier',{'id': employe.id})}}">Modifier
-						</a>
-					</td>
-					<td>
-						<form method="POST" action="{{path('employe_delete',{'id': employe.id}) }}">
-							<input type="hidden" name="_method" value="delete">
-							<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ employe.id)}}">
-							<input type="submit" class="btn btn-danger" value="supprimer" onsubmit="return confirm('Confirmer la suppression ?')">
-						</form>
-					</td>
+					<td>{{ employe.roles[0] }}</td>
 				</tr>
 			{% endfor %}
 		</tbody>
-	</table>
-{% endblock %}
+	</tbody>
+</table>{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une opérations
+{% endblock %}
+
+{% block navbarlists %}
+	<lu>
+		<a href="{{ path('app_expert') }}">Tableau de bord</a>
+		<br/><br/>
+		<a href="{{ path('app_expert_operations') }}">Ajouter une opération</a>
+		<br/><br/>
+		<a href="{{ path('app_liste_operations') }}">Lister mes opérations</a>
+		<br/><br/>
+		<a href="{{ path('liste_employe') }}">Liste des employés</a>
+		<br/><br/>
+		<a href="{{ path('inscription') }}">Ajouter un employé</a>
+		<br/><br/>
+		<a href="{{ path('liste_employe_modifier') }}">Modifier un employé</a>
+		<br/><br/>
+		<a href="{{ path('app_prise_commande_expert') }}">Ajouter commande client</a>
+		<br/><br/>
+		<a href="{{ path('app_chiffre_affaire') }}">Chiffre d'affaire</a>
+	</lu>
+
+{% endblock %}
+
+{% block main2 %}
+	{% for message in app.flashes('wrong') %}
+		<div class="alert alert-danger">
+			{{message}}
+		</div>
+	{% endfor %}
+	<table>
+		<h2>Liste des opérations en attente</h2>
+		<thead>
+			<tr>
+				<th scope="col">nom de commande</th>
+				<th scope="col">date</th>
+				<th scope="col">statut</th>
+				<th scope="col">nom du client</th>
+				<th scope="col">type d' operation</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for commandes in commandeEnAttente %}
+				<tr>
+					<td>
+						{{commandes.nomCommande}}
+					</td>
+					<td>
+						{{ commandes.date|date("d/m/Y") }}</td>
+					<td>
+						{{commandes.statut}}
+					</td>
+					<td>
+						{{commandes.client.nom}}
+					</td>
+					<td>
+						{{commandes.operation.typeoperation}}
+					</td>
+					<td>
+						<form method="post" class="col" action="{{path('expert_operations',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment Ajouter la commande ?');">
+
+							<input type="submit" class="btn btn-success" value="ajouter">
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
