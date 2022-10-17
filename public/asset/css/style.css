@@ -24,9 +24,11 @@ body {
     color: white;
     
 }
-.listLateral a {
+.listLateral a  {
+   
     color: white;
 }
+
 #peremain2 {
   height: 90%;
   overflow: auto;

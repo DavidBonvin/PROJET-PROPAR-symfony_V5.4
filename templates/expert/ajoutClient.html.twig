@@ -26,10 +26,87 @@
 
 {% endblock %}
 {% block main2 %}
+
+
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success">
 			{{message}}
 		</div>
+
+
 	{% endfor %}
 
-	{{ form(RegistrationClientType) }}{% endblock %}
+
+	{{ form_start(RegistrationClientType) }}
+	{{ form_row(RegistrationClientType.nom)}}
+	{{ form_row(RegistrationClientType.prenom)}}
+	{{ form_row(RegistrationClientType.nomSociete)}}
+	{{ form_row(RegistrationClientType.adresse)}}
+
+
+
+		<div id="resultat">
+			<ul id="ulResultat"><!-- Nous allons afficher un retour en jQuery au visiteur --></ul>
+
+		</div>
+	
+	<script>
+
+		// lorsque le document est prêt, la fonction que nous lui donnons est exécutée == callback
+$(document).ready(function () { // à cet élément, écouter cet événement ; mais cet événement va à l'ensemble du document afin qu'il ne disparaisse pas
+$(document).on('click', '.aldy', function (event) {
+
+console.log(event.target.innerHTML);
+// ici nous mettons sa valeur dans l'input
+$('#registration_client_adresse').val(event.target.innerHTML);
+});
+
+$("#registration_client_adresse").keyup(function (e) { // ne pas faire le comportement par défaut de l'événement keyup
+e.preventDefault();
+
+$.ajax({
+url: "https://api-adresse.data.gouv.fr/search/?q=",
+type: 'get',
+data: {
+q: $("#registration_client_adresse").val(),
+// Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+// password : $("#password").val()
+
+
+},
+success: function (response) { // var json = $.parseJSON(response);
+console.log(response);
+
+// nettoyez l'<ul> à chaque fois que vous faites un keyup
+$("#ulResultat").empty();
+
+
+// Nous stockons les données dans une variable
+let data = response.features;
+
+// nous parcourons les données
+data.forEach(addresse => { // nous prenons une donnée spécifique à l'intérieur de l'objet et l'enregistrons
+let valor = addresse.properties.label;
+// agregamos html dinamicamente
+$("#ulResultat").append (`<li class="aldy">${valor}</li>`)
+
+});
+},
+error: function (response) {
+console.log('error');
+// alert("error");
+}
+});
+});
+});
+	</script>
+
+	{{ form_row(RegistrationClientType.email)}}
+	<input type="submit" id="submit" value="Enregistrer" class"btn btn-primary"/>
+
+	{{ form_end(RegistrationClientType) }}
+
+{% endblock %}
+
+
+{% block javascripts %}{% endblock %}
