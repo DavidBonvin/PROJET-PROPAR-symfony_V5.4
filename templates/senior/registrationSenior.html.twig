@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Register
+{% endblock %}
+{% block monTitre %}Inscription client
+{% endblock %}
+{% block navbarlists %}
+	<li class='mt-4'>
+		<a href="{{ path('app_senior') }}">Tableau de bord</a>
+	</li>
+	<li class='mt-4'>
+		<a href="{{ path('app_senior_operations') }}">Ajouter une opération</a>
+	</li>
+	<li class='mt-4'>
+		<a href="{{ path('app_liste_operations_senior') }}">Liste mes opérations</a>
+	</li>
+	<li class='mt-4'>
+		<a href="{{ path('app_prise_commande') }}">Ajouter commande client</a>
+	</li>
+{% endblock %}
+
+{% block main2 %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{message}}
+		</div>
+	{% endfor %}
+	{{ form(RegistrationClientType) }}{% endblock %}
