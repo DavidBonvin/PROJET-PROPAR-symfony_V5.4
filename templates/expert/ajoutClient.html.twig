@@ -41,12 +41,14 @@
 	{{ form_row(RegistrationClientType.nom)}}
 	{{ form_row(RegistrationClientType.prenom)}}
 	{{ form_row(RegistrationClientType.nomSociete)}}
+    {{ form_row(RegistrationClientType.email)}}
 	{{ form_row(RegistrationClientType.adresse)}}
 
 
 
+
 		<div id="resultat">
-			<ul id="ulResultat"><!-- Nous allons afficher un retour en jQuery au visiteur --></ul>
+			<dl id="ulResultat"><!-- Nous allons afficher un retour en jQuery au visiteur --></dl>
 
 		</div>
 	
@@ -59,6 +61,7 @@ $(document).on('click', '.aldy', function (event) {
 console.log(event.target.innerHTML);
 // ici nous mettons sa valeur dans l'input
 $('#registration_client_adresse').val(event.target.innerHTML);
+ $("#ulResultat").empty();
 });
 
 $("#registration_client_adresse").keyup(function (e) { // ne pas faire le comportement par défaut de l'événement keyup
@@ -88,7 +91,8 @@ let data = response.features;
 data.forEach(addresse => { // nous prenons une donnée spécifique à l'intérieur de l'objet et l'enregistrons
 let valor = addresse.properties.label;
 // agregamos html dinamicamente
-$("#ulResultat").append (`<li class="aldy">${valor}</li>`)
+$("#ulResultat").append (`<li class="aldy">${valor}</li>`);
+
 
 });
 },
@@ -101,8 +105,8 @@ console.log('error');
 });
 	</script>
 
-	{{ form_row(RegistrationClientType.email)}}
-	<input type="submit" id="submit" value="Enregistrer" class"btn btn-primary"/>
+	
+	<input type="submit" id="submit" value="Enregistrer" class="btn btn-primary mx-auto"/>
 
 	{{ form_end(RegistrationClientType) }}
 

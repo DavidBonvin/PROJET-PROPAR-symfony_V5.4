@@ -28,7 +28,6 @@ body {
    
     color: white;
 }
-
 #peremain2 {
   height: 90%;
   overflow: auto;
@@ -58,4 +57,7 @@ color: #FFFFFF;
     left: 552px;
     background: #3D6A9E;
     border-radius: 10px;
+}
+#ulResultat{
+    margin-top: none!important;
 }
