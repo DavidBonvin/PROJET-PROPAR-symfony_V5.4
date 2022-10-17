@@ -31,14 +31,16 @@ body {
 #peremain2 {
   height: 90%;
   overflow: auto;
+  background-color: white;
 }
 .cadre{
-    position: absolute;
+    /* position: absolute;
     width: 60%;
     height: 530px;
     left: 32%;
-    top: 17%;
-    background-color: #BABFC6;
+    top: 17%; */
+    background: rgb(220, 220, 220);
+    margin-left: 10%;
     border-radius: 15px;
 }
 h2{
@@ -51,10 +53,9 @@ font-weight: 400;
 font-size: 40px;
 color: #FFFFFF;
 } 
-.operations{
+/* .operations{
     width: 723.67px;
     height: 115.08px;
-    left: 552px;
     background: #3D6A9E;
     border-radius: 10px;
 }
