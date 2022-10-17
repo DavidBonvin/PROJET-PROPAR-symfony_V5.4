@@ -22,10 +22,10 @@ body {
 }
 .listLateral  {
     color: white;
-    margin-top: 30%;
-    margin-left: 10%;
+    
 }
-.listLateral a {
+.listLateral a  {
+   
     color: white;
 }
 #peremain2 {
@@ -58,21 +58,7 @@ color: #FFFFFF;
     height: 115.08px;
     background: #3D6A9E;
     border-radius: 10px;
-} */
-.successs:hover{
-
-    background-color: rgba(130, 208, 41, 0.68);
 }
-.parent {
-
-background: #3D6A9E;
-border-radius: 10px;
-margin-bottom: 2%;
-display: grid;
-grid-template-columns: repeat(6, 1fr);
-
-grid-column-gap: 0px;
-grid-row-gap: 0px;
+#ulResultat{
+    margin-top: none!important;
 }
-
-.div1 { grid-area: 1 / 1 / 2 / 6; }
