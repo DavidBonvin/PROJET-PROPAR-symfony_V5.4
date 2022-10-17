@@ -53,22 +53,11 @@ font-weight: 400;
 font-size: 40px;
 color: #FFFFFF;
 } 
-/* .operations{
+.operations{
     width: 723.67px;
     height: 115.08px;
     background: #3D6A9E;
     border-radius: 10px;
-}
-#ulResultat{
-    margin-top: none!important;
-}
-
-.div1 { grid-area: 1 / 1 / 2 / 6; }
-
-
-.successs:hover{
-
-    background-color: rgba(130, 208, 41, 0.68);
 }
 .parent {
 

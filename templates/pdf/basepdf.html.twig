@@ -99,8 +99,8 @@
 		{% endblock %}
 	</head>
 	<body>
-		{# <img src="{{asset('asset/img/logoPropar.png')}}" style=" width: 100%; max-width: 300px" alt="logoPropar">
-				<img class="" src="/public/asset/css" alt="logoPropar"> #}
+		<img src="{{asset('asset/img/logoPropar.png')}}" style=" width: 100%; max-width: 300px" alt="logoPropar">
+		<img class="" src="/public/asset/css" alt="logoPropar">
 		<div class="invoice-box">
 			<table cellpadding="0" cellspacing="0">
 				<tr class="top">
@@ -112,13 +112,11 @@
 									{{ commande.nomCommande}}<br/>
 									Commande N°
 									{{ commande.id}}<br/>
-									Date de la commande:{{ commande.date|date("d/m/Y") }}<br/>
-									Description de la commande:
-									{{ commande.operation.description}}<br/>
+									Date de la commande:{{ commande.date|date("d/m/Y") }}
 								</td>
 							</tr>
 							<h5>Fait a Lille ce,<br/>
-								{{" now"|date("d/m/Y")}}</h5>
+								{{" now"|format_datetime('full', 'none', locale='fr')}}</h5>
 						</table>
 					</td>
 				</tr>
