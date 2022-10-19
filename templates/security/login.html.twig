@@ -14,8 +14,12 @@
 
 {% block main2 %}
 	<div class="row p-4 mx-auto my-auto align-items-center" style="height: 80%;">
-		<div class="col">
-			<form method="post">
+		<div class="col" style="    padding-left: 15%;
+				    padding-right: 15%;">
+			<form method="post" style="     background-color: whitesmoke;
+										    padding: 60px;
+										    border-radius: 20px;
+										}">
 				{% if error %}
 					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 				{% endif %}
@@ -28,7 +32,11 @@
 
 					</div>
 				{% endif %}
+				<h3 style=" text-align: center;">
+					<img class="" src="{{asset('asset/img/logoBlue.svg')}}" alt="">
+				</h3>
 
+				<br>
 				<label for="inputUuid">Email:
 				</label>
 				<input type="text" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="username" required autofocus>
@@ -39,20 +47,20 @@
 				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				{#
-							        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-							        See https://symfony.com/doc/current/security/remember_me.html
-							
-							        <div class="checkbox mb-3">
-							            <label>
-							                <input type="checkbox" name="_remember_me"> Remember me
-							            </label>
-							        </div>
-							    #}
+															        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+															        See https://symfony.com/doc/current/security/remember_me.html
+															
+															        <div class="checkbox mb-3">
+															            <label>
+															                <input type="checkbox" name="_remember_me"> Remember me
+															            </label>
+															        </div>
+															    #}
 				<div class="d-grid gap-2 col-6 mx-auto">
 					<button class="btn btn-primary m-4" type="submit">
 						Valider
 					</button>
-					<a class="btn btn-light" href="{{ path('connect_google') }}" role="button" type="submit" style="margin-left: 1.5rem; margin-right: 1.5rem;" >Connectez-vous avec
+					<a class="btn btn-light" href="{{ path('connect_google') }}" role="button" type="submit" style="margin-left: 1.5rem; margin-right: 1.5rem;">Connectez-vous avec
 						<img class="logo_google" src="{{asset('asset/img/logoogle.svg')}}" alt=""></a>
 
 				</div>

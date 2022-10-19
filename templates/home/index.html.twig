@@ -19,7 +19,8 @@
 						<th scope="col">Nom de l'employé</th>
 					</tr>
 				</thead>
-				<tbody >
+
+				<tbody>
 					{% for commandes in commandeEnCours %}
 						<tr class="table-secondary">
 							<td>
@@ -51,7 +52,7 @@
 
 			<h3>Liste d'operations Terminées</h3>
 			<br>
-			<div class="container" id="containerScrollLists" style=" min-height:40%; max-height:45%; overflow-y: scroll;">
+			<div class="container">
 				<div class="row">
 					<div class="col">
 
@@ -66,36 +67,44 @@
 									<th scope="col">Nom de l'employé</th>
 								</tr>
 							</thead>
-
-							<tbody>
-								{% for commandes in commandeTermine %}
-									<tr class="table-secondary">
-
-										<td>
-											{{commandes.nomCommande}}
-										</td>
-										<td>
-											{{ commandes.date|date("d/m/Y") }}</td>
-										<td>
-											{{commandes.statut}}
-										</td>
-										<td>
-											{{commandes.client.nom}}
-										</td>
-										<td>
-											{{commandes.operation.typeoperation}}
-										</td>
-										<td>
-											{{commandes.user.nom|default('')}}
-										</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-
 						</table>
 					</div>
 				</div>
 			</div>
+			
+				<div class="container">
+					<div class="row">
+						<div class="col" style=" min-height: 20%; max-height: 24%; overflow-y: scroll; min-width: 990px; max-width: 1235px; padding: auto; position: fixed; margin-top: 60px;">
+							<table class="table">
+								<tbody>
+									{% for commandes in commandeTermine %}
+										<tr class="table-secondary">
+
+											<td>
+												{{commandes.nomCommande}}
+											</td>
+											<td>
+												{{ commandes.date|date("d/m/Y") }}</td>
+											<td>
+												{{commandes.statut}}
+											</td>
+											<td>
+												{{commandes.client.nom}}
+											</td>
+											<td>
+												{{commandes.operation.typeoperation}}
+											</td>
+											<td>
+												{{commandes.user.nom|default('')}}
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>	
+						</div>
+					</div>
+				</div>
+			
 		</div>
 	</div>
-</div>{% endblock %}
+</div></div></div></div>{% endblock %}
