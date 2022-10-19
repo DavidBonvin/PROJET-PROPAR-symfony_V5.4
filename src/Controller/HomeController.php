@@ -21,13 +21,13 @@ class HomeController extends AbstractController
         $commandeEnCours = $repository->findBy(
             array('statut' => 'En cours'),
             array('date' => 'desc'),
-            null,
+            10,
             null
         );
         $commandeEnTermine = $repository->findBy(
             array('statut' => 'Terminer'),
             array('date' => 'desc'),
-            null,
+            10,
             null
         );
         return $this->render('home/index.html.twig', [

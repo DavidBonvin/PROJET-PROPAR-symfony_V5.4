@@ -4,87 +4,98 @@
 {% endblock %}
 
 {% block main2 %}
-<div class="row p-4 mx-auto">
-	<div class="col-12">
-		<h3>Liste d'operations en cours</h3>
-		
-		<table class="table">
-			<thead>
-				<tr class="tr-tableau">
-					<th scope="col">Nom de commande</th>
-					<th scope="col">Date</th>
-					<th scope="col">Statut</th>
-					<th scope="col">Nom du client</th>
-					<th scope="col">Type d' operation</th>
-					<th scope="col">Nom de l'employé</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for commandes in commandeEnCours %}
-					<tr class="table-secondary">
-						<td >
-							{{commandes.nomCommande}}
-						</td>
-						<td >
-							{{ commandes.date|date("d/m/Y") }}
-						</td>
-						<td >
-							{{commandes.statut}}
-						</td >
-						<td >
-							{{commandes.client.nom}}
-						</td>
-						<td >
-							{{commandes.operation.typeoperation}}
-						</td>
-						<td >
-							{{commandes.user.nom|default('')}}
-						</td>
+	<div class="row p-4 mx-auto">
+		<div class="col-12" style="height: 40%;">
+			<h3>Liste d'operations en cours</h3>
+			<br>
+			<table class="table">
+				<thead>
+					<tr class="tr-tableau">
+						<th scope="col">Nom de commande</th>
+						<th scope="col">Date</th>
+						<th scope="col">Statut</th>
+						<th scope="col">Nom du client</th>
+						<th scope="col">Type d' operation</th>
+						<th scope="col">Nom de l'employé</th>
 					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+				</thead>
+				<tbody >
+					{% for commandes in commandeEnCours %}
+						<tr class="table-secondary">
+							<td>
+								{{commandes.nomCommande}}
+							</td>
+							<td>
+								{{ commandes.date|date("d/m/Y") }}
+							</td>
+							<td>
+								{{commandes.statut}}
+							</td>
+							<td>
+								{{commandes.client.nom}}
+							</td>
+							<td>
+								{{commandes.operation.typeoperation}}
+							</td>
+							<td>
+								{{commandes.user.nom|default('')}}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
 	</div>
+	<div class="row p-4 mx-auto">
+		<div class="col-12  align-self-center" style="height: 40%;">
 
-	<div class="col-12">
-		<h3>Liste d'operations Terminées</h3>
-		<br>
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Nom de commande</th>
-					<th scope="col">Date</th>
-					<th scope="col">Statut</th>
-					<th scope="col">Nom du client</th>
-					<th scope="col">Type d' operation</th>
-					<th scope="col">Nom de l'employé</th>
-				</tr>
-			</thead>
-			<tbody>
-			{% for commandes in commandeTermine %}
-				<tr class="table-secondary" >
-					
-						<td>
-							{{commandes.nomCommande}}
-						</td>
-						<td>
-							{{ commandes.date|date("d/m/Y") }}</td>
-						<td>
-							{{commandes.statut}}
-						</td>
-						<td>
-							{{commandes.client.nom}}
-						</td>
-						<td>
-							{{commandes.operation.typeoperation}}
-						</td>
-						<td>
-							{{commandes.user.nom|default('')}}
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+			<h3>Liste d'operations Terminées</h3>
+			<br>
+			<div class="container" id="containerScrollLists" style=" min-height:40%; max-height:45%; overflow-y: scroll;">
+				<div class="row">
+					<div class="col">
+
+						<table class="table">
+							<thead>
+								<tr class="tr-tableau">
+									<th scope="col">Nom de commande</th>
+									<th scope="col">Date</th>
+									<th scope="col">Statut</th>
+									<th scope="col">Nom du client</th>
+									<th scope="col">Type d' operation</th>
+									<th scope="col">Nom de l'employé</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								{% for commandes in commandeTermine %}
+									<tr class="table-secondary">
+
+										<td>
+											{{commandes.nomCommande}}
+										</td>
+										<td>
+											{{ commandes.date|date("d/m/Y") }}</td>
+										<td>
+											{{commandes.statut}}
+										</td>
+										<td>
+											{{commandes.client.nom}}
+										</td>
+										<td>
+											{{commandes.operation.typeoperation}}
+										</td>
+										<td>
+											{{commandes.user.nom|default('')}}
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-{% endblock %}
+</div>{% endblock %}

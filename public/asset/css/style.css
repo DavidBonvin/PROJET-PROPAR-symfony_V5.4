@@ -77,5 +77,18 @@ grid-row-gap: 0px;
     background-color: #3d6a9e;
     color: white;
 }
+#divRowLogin {
+    height: 80%;
+}
+#containerScrollLists{
+    min-height: 30%;
+    max-height: 35%;
+    overflow-y: scroll;
+    min-width: 990px;
+    max-width: 1235px;
+    margin: auto;
+    padding: auto;
+    position: fixed;
 
+}
 

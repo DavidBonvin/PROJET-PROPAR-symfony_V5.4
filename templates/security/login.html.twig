@@ -1,55 +1,63 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Log in!{% endblock %}
-{% block monTitre %}Login{% endblock %}
+{% block title %}Log in!
+{% endblock %}
+{% block monTitre %}Login
+{% endblock %}
 
 {% block navbarlists %}
 	<li>
-	<a href="{{ path('app_home') }}">Accueil</a>
+		<a href="{{ path('app_home') }}">Accueil</a>
 	</li>
 {% endblock %}
 
-{% block main2 %} 
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+{% block main2 %}
+	<div class="row p-4 mx-auto my-auto align-items-center" style="height: 80%;">
+		<div class="col">
+			<form method="post">
+				{% if error %}
+					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a class="btn btn-danger" href="{{ path('app_logout') }}">Deconnexion</a>
-            
-        </div>
-    {% endif %}
+				{% if app.user %}
+					<div class="mb-3">
+						You are logged in as
+						{{ app.user.userIdentifier }},
+						<a class="btn btn-danger" href="{{ path('app_logout') }}">Deconnexion</a>
 
-    <label for="inputUuid">Email: </label>
-    <input type="text" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="username" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+					</div>
+				{% endif %}
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+				<label for="inputUuid">Email:
+				</label>
+				<input type="text" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="username" required autofocus>
+				<label for="inputPassword">Password</label>
+				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+				<input
+				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-<div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn btn-primary m-4" type="submit">
-        Valider
-    </button>
-    <a class="btn btn-light" href="{{ path('connect_google') }}" role="button" type="submit">Connectez-vous avec <img  class="logo_google" src="{{asset('asset/img/logoogle.svg')}}" alt=""></a>
-     
-</div>
+				{#
+							        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+							        See https://symfony.com/doc/current/security/remember_me.html
+							
+							        <div class="checkbox mb-3">
+							            <label>
+							                <input type="checkbox" name="_remember_me"> Remember me
+							            </label>
+							        </div>
+							    #}
+				<div class="d-grid gap-2 col-6 mx-auto">
+					<button class="btn btn-primary m-4" type="submit">
+						Valider
+					</button>
+					<a class="btn btn-light" href="{{ path('connect_google') }}" role="button" type="submit" style="margin-left: 1.5rem; margin-right: 1.5rem;" >Connectez-vous avec
+						<img class="logo_google" src="{{asset('asset/img/logoogle.svg')}}" alt=""></a>
 
-</form>
+				</div>
+
+			</form>
+		</div>
+	</div>
 {% endblock %}
-
