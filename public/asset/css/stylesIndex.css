@@ -5,7 +5,8 @@
   --text-titles-petite: 1rem;
   --size-texte-moyen: 1.25rem;
   --size-texte-grande: 1.50rem;
-  --size-texte-bg: 1.75rem;   
+  --size-texte-bg: 1.75rem;  
+  --font-weight-500:500; 
 }
 #rowMain2General {
   background-color:var(--white);
@@ -79,22 +80,29 @@
 }
 .ele_1{
   width:5%;
+  font-weight: var(--font-weight-500);
 }
 .ele_2{
   width:20%;
+  font-weight: var(--font-weight-500);
 }
 .ele_3{
   width:10%;
+  font-weight: var(--font-weight-500);
 }
 .ele_4{
   width:15%;
+  font-weight: var(--font-weight-500);
 }
 .ele_5{
   width:20%;
+  font-weight: var(--font-weight-500);
 }
 .ele_6{
   width:15%;
+  font-weight: var(--font-weight-500);
 }
 .ele_7{
   width:15%;
+  font-weight: var(--font-weight-500);
 }
