@@ -1,0 +1,100 @@
+:root{
+  --white: #ffffff;
+  --black: #000000;
+  --blueApp:#3d6a9e;
+  --text-titles-petite: 1rem;
+  --size-texte-moyen: 1.25rem;
+  --size-texte-grande: 1.50rem;
+  --size-texte-bg: 1.75rem;   
+}
+#rowMain2General {
+  background-color:var(--white);
+  height: 90vh;
+}
+
+#colMain2General-up {
+  background-color:var(--white);
+  height: 40vh;
+}
+
+#colMain2General-down {
+  background-color: var(--white);
+  height: 40vh;
+}
+
+.titleLists {
+  background-color:var(--white);
+  height: 10%;
+  margin-bottom: 10px;
+  margin-top: 8px;
+}
+.titleLists h5 {
+  padding: 5px;
+  font-size: var(--size-texte-grande);
+}
+
+.ContainerTableauList {
+  background-color: var(--blueApp);
+  height: 85%;
+}
+
+#titlesTable {
+  background-color: var(--white);
+  height: 10%;
+  margin: 0;
+  width: 98.5%;
+}
+
+#ContenueTable {
+  background-color:azure;
+  height: 80%;
+  overflow-y: scroll;
+} 
+.titlesTR{
+  background-color:var(--blueApp);
+  color: var(--white);
+  font-size: var(--text-titles-petite);
+
+}
+.ele_T1{
+  width:5%;
+}
+.ele_T2{
+  width:20%;
+}
+.ele_T3{
+  width:10%;
+}
+.ele_T4{
+  width:15%;
+}
+.ele_T5{
+  width:20%;
+}
+.ele_T6{
+  width:15%;
+}
+.ele_T7{
+  width:15%;
+}
+.ele_1{
+  width:5%;
+}
+.ele_2{
+  width:20%;
+}
+.ele_3{
+  width:10%;
+}
+.ele_4{
+  width:15%;
+}
+.ele_5{
+  width:20%;
+}
+.ele_6{
+  width:15%;
+}
+.ele_7{
+  width:15%;
+}

@@ -33,6 +33,9 @@ body {
   overflow: auto;
   background-color: white;
 }
+#peremain2 .row {
+background-color: white;
+}
 .cadre{
     /* position: absolute;
     width: 60%;

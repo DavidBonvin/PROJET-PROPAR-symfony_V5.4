@@ -4,107 +4,93 @@
 {% endblock %}
 
 {% block main2 %}
-	<div class="row p-4 mx-auto">
-		<div class="col-12" style="height: 40%;">
-			<h3>Liste d'operations en cours</h3>
-			<br>
-			<table class="table">
-				<thead>
-					<tr class="tr-tableau">
-						<th scope="col">Nom de commande</th>
-						<th scope="col">Date</th>
-						<th scope="col">Statut</th>
-						<th scope="col">Nom du client</th>
-						<th scope="col">Type d' operation</th>
-						<th scope="col">Nom de l'employé</th>
-					</tr>
-				</thead>
+	<div class="row p-4" id="rowMain2General1">
+            <!-- container list en cours -->
+            <div class="col-12" id="colMain2General-up">
+              <div class="titleLists">
+                <h5>Liste des operations en Cours</h5>
+              </div>
+                <!-- Container tableau title et contenu -->
+              <div class="ContainerTableauList">
+                <!-- Tableau pour les titles -->
+                <table class="table" id="titlesTable">
+                  <thead >
+                    <tr  class="titlesTR">
+                      <th scope="row" class="ele_T1">#Id</th>
+                      <th scope="row" class="ele_T2">Nom Commande</th>
+                      <th scope="row" class="ele_T3">Date</th>
+                      <th scope="row" class="ele_T4">Statut</th>
+                      <th scope="row" class="ele_T5">Nom du client</th>
+                      <th scope="row" class="ele_T6">Type op</th>
+                      <th scope="row" class="ele_T7">Id emp</th>
+                    </tr>
+                  </thead>
+                </table>
+                <!-- Container scroll et tableau de contenu -->
+                <div class="" id="ContenueTable">
+                  <table class="table">
+                    <tbody>
+                      {% for commandes in commandeEnCours %}
+                      <tr>
+                        <th scope="row" class="ele_1">#Id</th>
+                        <th scope="row" class="ele_2">{{commandes.nomCommande}}</th>
+                        <th scope="row" class="ele_3">{{ commandes.date|date("d/m/Y") }}</th>
+                        <th scope="row" class="ele_4">{{commandes.statut}}</th>
+                        <th scope="row" class="ele_5">{{commandes.client.nom}}</th>
+                        <th scope="row" class="ele_6">{{commandes.operation.typeoperation}}</th>
+                        <th scope="row" class="ele_7">{{commandes.user.nom|default('')}}</th>
+                      </tr>
+                      {% endfor %}
+                      
 
-				<tbody>
-					{% for commandes in commandeEnCours %}
-						<tr class="table-secondary">
-							<td>
-								{{commandes.nomCommande}}
-							</td>
-							<td>
-								{{ commandes.date|date("d/m/Y") }}
-							</td>
-							<td>
-								{{commandes.statut}}
-							</td>
-							<td>
-								{{commandes.client.nom}}
-							</td>
-							<td>
-								{{commandes.operation.typeoperation}}
-							</td>
-							<td>
-								{{commandes.user.nom|default('')}}
-							</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<div class="row p-4 mx-auto">
-		<div class="col-12  align-self-center" style="height: 40%;">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- container table down  -->
+            <div class="col-12" id="colMain2General-down">
+              <div class="titleLists">
+                <h5>Liste des operations Terminées</h5>
+              </div>
+              <div class="ContainerTableauList">
+                <!-- Tableau pour les titles -->
+                <table class="table" id="titlesTable">
+                  <thead >
+                    <tr class="titlesTR">
+                      <th scope="row" class="ele_T1">#Id</th>
+                      <th scope="row" class="ele_T2">Nom Commande</th>
+                      <th scope="row" class="ele_T3">Date</th>
+                      <th scope="row" class="ele_T4">Statut</th>
+                      <th scope="row" class="ele_T5">Nom du client</th>
+                      <th scope="row" class="ele_T6">Type op</th>
+                      <th scope="row" class="ele_T7">Id emp</th>
+                    </tr>
+                  </thead>
+                </table>
+                <!-- Container scroll et tableau de contenu -->
+                <div class="" id="ContenueTable">
+                  <table class="table">
+                    <tbody>
+                      {% for commandes in commandeTermine %}
+                      <tr>
+                        <th scope="row" class="ele_1">#Id</th>
+                        <th scope="row" class="ele_2">{{commandes.nomCommande}}</th>
+                        <th scope="row" class="ele_3">{{ commandes.date|date("d/m/Y") }}</th>
+                        <th scope="row" class="ele_4">{{commandes.statut}}</th>
+                        <th scope="row" class="ele_5">{{commandes.client.nom}}</th>
+                        <th scope="row" class="ele_6">{{commandes.operation.typeoperation}}</th>
+                        <th scope="row" class="ele_7">{{commandes.user.nom|default('')}}</th>
+                      </tr>
+                      {% endfor %}
+                      
 
-			<h3>Liste d'operations Terminées</h3>
-			<br>
-			<div class="container">
-				<div class="row">
-					<div class="col" style="padding-right:0;">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
 
-						<table class="table" style="margin-bottom: 0;">
-							<thead>
-								<tr class="tr-tableau">
-									<th scope="col">Nom de commande</th>
-									<th scope="col">Date</th>
-									<th scope="col">Statut</th>
-									<th scope="col">Nom du client</th>
-									<th scope="col">Type d' operation</th>
-									<th scope="col">Nom de l'employé</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-				</div>
-			</div>
-			
-				<div class="container">
-					<div class="row">
-						<div class="col" style=" min-height: 20%; max-height: 24%; overflow-y: scroll; min-width: 990px; max-width: 1235px; padding: auto; position: fixed; ">
-							<table class="table">
-								<tbody>
-									{% for commandes in commandeTermine %}
-										<tr class="table-secondary">
+            </div>
 
-											<td>
-												{{commandes.nomCommande}}
-											</td>
-											<td>
-												{{ commandes.date|date("d/m/Y") }}</td>
-											<td>
-												{{commandes.statut}}
-											</td>
-											<td>
-												{{commandes.client.nom}}
-											</td>
-											<td>
-												{{commandes.operation.typeoperation}}
-											</td>
-											<td>
-												{{commandes.user.nom|default('')}}
-											</td>
-										</tr>
-									{% endfor %}
-								</tbody>
-							</table>	
-						</div>
-					</div>
-				</div>
-			
-		</div>
-	</div>
-</div></div></div></div>{% endblock %}
+          </div>
+	{% endblock %}
