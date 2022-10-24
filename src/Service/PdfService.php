@@ -5,6 +5,7 @@ namespace App\Service;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+
 class PdfService
 {
     private $domPdf;
@@ -28,9 +29,10 @@ class PdfService
             'Attachement' => false
         ]);
     }
-    public function generateBinaryPDF($html)
+    public function getPdfEmail($html)
     {
         $this->domPdf->loadHtml($html);
+        $this->domPdf->setPaper("A4", "portrait");
         $this->domPdf->render();
         $this->domPdf->output();
     }

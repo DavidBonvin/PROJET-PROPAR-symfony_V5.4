@@ -9,6 +9,7 @@ use App\Entity\Operation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -21,24 +22,22 @@ class RegistrationCommandeType extends AbstractType
         $builder
             ->add('nomCommande')
             ->add('date')
-            ->add('statut', TextType::class, [
-                'data' => 'En attente',
-            ])
             ->add('operation', EntityType::class, [
                 'class' => Operation::class,
                 'choice_label' => 'type_operation',
+                'constraints' => [
+                    new NotNull()
+                ],
                 'required' => false
             ])
             ->add('client', EntityType::class, [
                 'class' => Client::class,
                 'choice_label' => 'email',
+                'constraints' => [
+                    new NotNull()
+                ],
                 'required' => false
             ])
-            // ->add('user', EntityType::class, [
-            //     'class' => User::class,
-            //     'choice_label' => 'nom',
-            // ])
-
             ->add('Enregistrer', SubmitType::class);
     }
 

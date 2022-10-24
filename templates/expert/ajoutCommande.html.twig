@@ -26,23 +26,30 @@
 {% endblock %}
 
 {% block main2 %}
-<div class="row p-4 mx-auto">
-	{% for message in app.flashes('success') %}
-		<div class="alert alert-success">
-			{{message}}
-		</div>
-	{% endfor %}
-	<a class="btn btn-success" href="{{ path('app_registration_client_expert') }}">Ajout client</a>
+	<div class="cadre col-10 row p-4">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{message}}
+			</div>
+		{% endfor %}
+		<h2 style="color:black">Ajouter une commande</h2>
+		{{ form_start(RegistrationCommandeType) }}
 
-	{{ form_start(RegistrationCommandeType) }}
-	{{ form_row(RegistrationCommandeType.nomCommande)}}
-	{{ form_row(RegistrationCommandeType.date)}}
-	{{ form_row(RegistrationCommandeType.statut)}}
-	{{ form_row(RegistrationCommandeType.client)}}
-	{{ form_row(RegistrationCommandeType.operation)}}
-	{{ form_end(RegistrationCommandeType) }}
+		<a class="btn btn-success" style='margin-bottom:2%' href="{{ path('app_registration_client_expert') }}">Ajout client</a>
+		{{ form_row(RegistrationCommandeType.nomCommande)}}
+		{{ form_row(RegistrationCommandeType.date)}}
+		{{ form_row(RegistrationCommandeType.client)}}
+		{{ form_row(RegistrationCommandeType.operation)}}
+		{{ form_end(RegistrationCommandeType) }}
+	</div>
+	{# <script>
 
-</div>
-
-
+const alerts = document.querySelectorAll('[class*="alert alert-success"]')
+for (const alert of alerts) {
+    setTimeout( function() {
+        const bootstrapAlert = bootstrap.Alert.getOrCreateInstance(alert);
+        bootstrapAlert.close();
+    }, 200);
+}
+		</script> #}
 {% endblock %}
