@@ -25,47 +25,54 @@
 {% endblock %}
 
 {% block main2 %}
-	{% for message in app.flashes('wrong') %}
-		<div class="alert alert-danger">
-			{{message}}
-		</div>
-	{% endfor %}
-	<table>
-		<h2>Liste des opérations en attente</h2>
-		<thead>
-			<tr>
-				<th scope="col">nom de commande</th>
-				<th scope="col">date</th>
-				<th scope="col">statut</th>
-				<th scope="col">nom du client</th>
-				<th scope="col">type d' operation</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for commandes in commandeEnAttente %}
+	<div class="cadre col-10 row p-4">
+		{% for message in app.flashes('wrong') %}
+			<div class="alert alert-danger">
+				{{message}}
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('successs') %}
+			<div class=" alert alert-success">
+				{{message}}
+			</div>
+		{% endfor %}
+		<table>
+			<h2>Liste des opérations en attente</h2>
+			<thead>
 				<tr>
-					<td>
-						{{commandes.nomCommande}}
-					</td>
-					<td>
-						{{ commandes.date|date("d/m/Y") }}</td>
-					<td>
-						{{commandes.statut}}
-					</td>
-					<td>
-						{{commandes.client.nom}}
-					</td>
-					<td>
-						{{commandes.operation.typeoperation}}
-					</td>
-					<td>
-						<form method="post" class="col" action="{{path('expert_operations',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment Ajouter la commande ?');">
-
-							<input type="submit" class="btn btn-success" value="ajouter">
-						</form>
-					</td>
+					<th scope="col">nom de commande</th>
+					<th scope="col">date</th>
+					<th scope="col">statut</th>
+					<th scope="col">nom du client</th>
+					<th scope="col">type d' operation</th>
 				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{% for commandes in commandeEnAttente %}
+					<tr>
+						<td>
+							{{commandes.nomCommande}}
+						</td>
+						<td>
+							{{ commandes.date|date("d/m/Y") }}</td>
+						<td>
+							{{commandes.statut}}
+						</td>
+						<td>
+							{{commandes.client.nom}}
+						</td>
+						<td>
+							{{commandes.operation.typeoperation}}
+						</td>
+						<td>
+							<form method="post" class="col" action="{{path('expert_operations',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment Ajouter la commande ?');">
+
+								<input type="submit" class="btn btn-success" value="ajouter">
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}

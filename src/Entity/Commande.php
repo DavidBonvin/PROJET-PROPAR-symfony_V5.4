@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CommandeRepository::class)
@@ -14,37 +15,45 @@ class Commande
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_product"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_product"})
      */
     private $nomCommande;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"show_product"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_product"})
      */
     private $statut;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="commandes")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="commande")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_product"})
      */
     private $client;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Operation::class, inversedBy="commandes")
+     * @ORM\ManyToOne(targetEntity=Operation::class, inversedBy="commande")
+     * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_product"})
      */
     private $operation;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commande")
+     * @Groups({"show_product"})
      */
     private $user;
 
@@ -124,5 +133,4 @@ class Commande
 
         return $this;
     }
- 
 }

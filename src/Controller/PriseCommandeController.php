@@ -22,14 +22,13 @@ class PriseCommandeController extends AbstractController
         $commande = new Commande();
         $form = $this->createForm(RegistrationCommandeType::class, $commande);
         $form->handleRequest($request);
-
+        $commande->setStatut("En attente");
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $this->addFlash("success", "La Commande a bien été ajouté");
 
             $entityManager->persist($commande);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+
+            $this->addFlash("success", "La commande a bien été ajouté");
 
             return $this->redirectToRoute('app_prise_commande_expert');
         }
@@ -46,14 +45,12 @@ class PriseCommandeController extends AbstractController
         $commande = new Commande();
         $form = $this->createForm(RegistrationCommandeType::class, $commande);
         $form->handleRequest($request);
+        $commande->setStatut("En attente");
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $this->addFlash("success", "La Commande a bien été ajouté");
-
             $entityManager->persist($commande);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+            $this->addFlash("success", "La commande a bien été ajouté");
 
             return $this->redirectToRoute('app_prise_commande');
         }
@@ -71,14 +68,12 @@ class PriseCommandeController extends AbstractController
         $commande = new Commande();
         $form = $this->createForm(RegistrationCommandeType::class, $commande);
         $form->handleRequest($request);
+        $commande->setStatut("En attente");
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $this->addFlash("success", "La Commande a bien été ajouté");
-
             $entityManager->persist($commande);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+            $this->addFlash("success", "La commande a bien été ajouté");
 
             return $this->redirectToRoute('app_prise_commande_apprenti');
         }

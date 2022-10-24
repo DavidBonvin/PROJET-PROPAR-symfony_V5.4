@@ -26,21 +26,23 @@
 
 {% block main2 %}
 	<div class="cadre col-10 row p-4">
-		<table>
-			<h2>Lister mes opérations</h2>
-
-			<th scope="col">nom de commande</th>
-			<th scope="col">date</th>
-			<th scope="col">statut</th>
-			<th scope="col">nom du client</th>
-			<th scope="col">type d' operation</th>
-
+		<h2>Lister mes opérations</h2>
+<input placeholder="Rechercher une operation" style="margin-left:30%; width: 50%"/>
+		<thead>
+			<tr>
+				<th scope="col">nom de commande</th>
+				<th scope="col">date</th>
+				<th scope="col">statut</th>
+				<th scope="col">nom du client</th>
+				<th scope="col">type d' operation</th>
+			</tr>
+		</thead>
+		<tbody>
 			{% for commandes in commandeProfil %}
 				<div class="parent">
 					<div class="div1">
 						{{commandes.nomCommande}}
 						{{ commandes.date|date("d/m/Y") }}
-						{# format_datetime('full', 'none', locale='fr') #}
 						{{commandes.statut}}
 						{{commandes.client.nom}}
 						{{commandes.operation.typeoperation}}
@@ -49,8 +51,9 @@
 							<a href="{{path('afficherCommande',{'id':commandes.id})}}">PDF</a>
 						{% endif %}
 					</div>
+
 				</div>
 			{% endfor %}
-		</table>
+		</tbody>
 	</div>
 {% endblock %}

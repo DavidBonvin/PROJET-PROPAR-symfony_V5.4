@@ -1,10 +1,3 @@
-{# {% extends 'base.html.twig' %}
-
-{% block title %}Hello ExpertController!{% endblock %}
-
-{% block main2 %}
-JE SUIS BIEN DANS LE CONTROLLER EXPERT
-{% endblock %} #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Dashboard
@@ -45,26 +38,31 @@ JE SUIS BIEN DANS LE CONTROLLER EXPERT
 				<tr>
 					<th scope="col">nom de commande</th>
 					<th scope="col">date</th>
-					<th scope="col">statut</th>
 					<th scope="col">nom du client</th>
 					<th scope="col">type d' operation</th>
 				</tr>
 			</thead>
-
-			{% for commandes in commandeProfil %}
-				<div class="parent">
-					<div class="div1">
-						{{commandes.nomCommande}}
-						{{ commandes.date|date("d/m/Y") }}
-						{{commandes.statut}}
-						{{commandes.client.nom}}
-						{{commandes.operation.typeoperation}}
-						<form method="post" action="{{path('expert_operations_terminer',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment terminer la commande ?');">
-							<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ commandes.id)}}">
-							<input type="submit" class="btn btn-successs" value="Terminer"></form>
-					</div>
-				</div>
-			{% endfor %}
 		</table>
+		{% for commandes in commandeProfil %}
+			<div class="parent">
+				<div class="div1">
+					{{commandes.nomCommande}}
+				</div>
+				<div class="div1">
+					{{ commandes.date|date("d/m/Y") }}
+				</div>
+				<div class="div1">
+					{{commandes.client.nom}}
+				</div>
+				<div class="div1">
+					{{commandes.operation.typeoperation}}
+				</div>
+				<div class="div1">
+					<form method="post" action="{{path('expert_operations_terminer',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment terminer la commande ?');">
+						<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ commandes.id)}}">
+						<input type="submit" class="btn btn-successs" value="Terminer"></form>
+				</div>
+			</div>
+		{% endfor %}
 	</div>
 {% endblock %}

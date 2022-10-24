@@ -5,80 +5,73 @@
 
 {% block main2 %}
 	<div class="col-6">
-		<h2>Liste d'operations en cours</h2>
 		<table class="table">
+			<h1>Opérations en cours</h1>
 			<thead>
 				<tr>
-					<th scope="col">nom de commande</th>
-					<th scope="col">date</th>
-					<th scope="col">statut</th>
-					<th scope="col">nom du client</th>
-					<th scope="col">type d' operation</th>
-					<th scope="col">nom de l'employé</th>
+					<th scope="col">Commande</th>
+					<th scope="col">Date</th>
+					<th scope="col">Client</th>
+					<th scope="col">Operation</th>
+					<th scope="col">Employé</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					{% for commandes in commandeEnCours %}
-						<td>
-							{{commandes.nomCommande}}
-						</td>
-						<td>
-							{{ commandes.date|date("d/m/Y") }}</td>
-						<td>
-							{{commandes.statut}}
-						</td>
-						<td>
-							{{commandes.client.nom}}
-						</td>
-						<td>
-							{{commandes.operation.typeoperation}}
-						</td>
-						<td>
-							{{commandes.user.nom|default('')}}
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
 		</table>
 	</div>
-
+	<div class="cadreAccueil1 col-6">
+		{% for commandes in commandeEnCours %}
+			<div class="parentAcc">
+				<div class="div1A">
+					{{commandes.nomCommande}}
+				</div>
+				<div class="div2A">
+					{{ commandes.date|date("d/m/Y") }}
+				</div>
+				<div class="div3A">
+					{{commandes.client.nom}}
+				</div>
+				<div class="div4A">
+					{{commandes.operation.typeoperation}}
+				</div>
+				<div class="div5A">
+					{{commandes.user.nom|default('')}}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 	<div class="col-6">
-		<h2>Liste d'operations Terminées</h2>
 		<table class="table">
+			<h1>Opérations Terminées</h1>
 			<thead>
 				<tr>
-					<th scope="col">nom de commande</th>
-					<th scope="col">date</th>
-					<th scope="col">statut</th>
-					<th scope="col">nom du client</th>
-					<th scope="col">type d' operation</th>
-					<th scope="col">nom de l'employé</th>
+					<th scope="col">Commande</th>
+					<th scope="col">Date</th>
+					<th scope="col">Client</th>
+					<th scope="col">Operation</th>
+					<th scope="col">Employé</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					{% for commandes in commandeTermine %}
-						<td>
-							{{commandes.nomCommande}}
-						</td>
-						<td>
-							{{ commandes.date|date("d/m/Y") }}</td>
-						<td>
-							{{commandes.statut}}
-						</td>
-						<td>
-							{{commandes.client.nom}}
-						</td>
-						<td>
-							{{commandes.operation.typeoperation}}
-						</td>
-						<td>
-							{{commandes.user.nom|default('')}}
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
 		</table>
+	</div>
+	<div class="cadreAcceuil2 col-6">
+		{% for commandes in commandeTermine %}
+			<div class="parentAcc">
+				<div class="div1A">
+					{{commandes.nomCommande}}
+				</div>
+				<div class="div2A">
+					{{ commandes.date|date("d/m/Y") }}
+				</div>
+				<div class="div3A">
+					{{commandes.client.nom}}
+				</div>
+				<div class="div4A">
+					{{commandes.operation.typeoperation}}
+				</div>
+				<div class="div5A">
+					{{commandes.user.nom|default('')}}
+				</div>
+			</div>
+		{% endfor %}
 	</div>
 {% endblock %}
