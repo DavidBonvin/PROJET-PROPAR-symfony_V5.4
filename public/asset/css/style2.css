@@ -1,3 +1,14 @@
+
+:root{
+  --whiteAPP: #ffffff;
+  --blackApp: #000000;
+  --blueApp:#3d6a9e;
+  --text-titles-petite: 1rem;
+  --size-texte-moyen: 1.25rem;
+  --size-texte-grande: 1.50rem;
+  --size-texte-bg: 1.75rem;  
+  --font-weight-500:500; 
+}
 body {
   width: 100%;
   height: 100vh;
@@ -31,6 +42,7 @@ padding: 10%;
 #peremain2 {
 height: 90%;
 overflow: auto;
+background-color: var(--whiteAPP);
 
 }
 
