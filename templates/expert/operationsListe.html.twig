@@ -25,34 +25,64 @@
 {% endblock %}
 
 {% block main2 %}
-<div class="row p-4 mx-auto">
-	<div class="cadre col-10 row p-4">
-		<table>
-			<h2>Lister mes opérations</h2>
-
-			<th scope="col">nom de commande</th>
-			<th scope="col">date</th>
-			<th scope="col">statut</th>
-			<th scope="col">nom du client</th>
-			<th scope="col">type d' operation</th>
-
-			{% for commandes in commandeProfil %}
-				<div class="parent">
-					<div class="div1">
-						{{commandes.nomCommande}}
-						{{ commandes.date|date("d/m/Y") }}
-						{# format_datetime('full', 'none', locale='fr') #}
-						{{commandes.statut}}
-						{{commandes.client.nom}}
-						{{commandes.operation.typeoperation}}
-
-						{% if commandes.statut == "Terminer" %}
-							<a href="{{path('afficherCommande',{'id':commandes.id})}}">PDF</a>
+	<!-- Row general Main2 -->
+	<div class="row p-4" id="rowMain2General">
+		
+		<!-- container list en cours  up -->
+		<div class="col-12" id="colMain2General-up1">
+			<div class="titleLists">Mes Opérations</div>
+			<!-- Container  title et contenu -->
+			<div class="container" id="Container_fondo_lists">
+				<div class="row" id="row_title_expert">
+					<p class="subtitle"></p>
+				</div>
+				<div class="row " id="row_List_elemente">
+					<div class="contListElement">
+						<div class="row rolistelement">
+						{% for commandes in commandeProfil %}
+							<div class="col-12 elementosLists">
+							
+									<div class="container container2">
+										
+										<div class="row row2">
+											<div class="col-1 divNcNc">
+												<div class="idCommande">{{commandes.id}}</div>
+												<div></div>
+											</div>
+											<div class="col-5 divNcNc">
+												<div class="nomCommande">{{commandes.nomCommande}}</div>
+												<div class="nomClient">{{commandes.client.nom}}</div>
+											</div>
+											<div class="col-3 divNcNc">
+												<div>{{commandes.operation.typeoperation}}</div>
+												<div class="divDate2">{{ commandes.date|date("d/m/Y") }}</div>
+											</div>
+											<div class="col-3 btnTerminer">
+												{% if commandes.statut == "Terminer" %}
+							<a href="{{path('afficherCommande',{'id':commandes.id})}}" class="btn btn-primary">PDF</a>
 						{% endif %}
+											</div>
+										</div>
+										
+									</div>
+								
+							</div>
+							{% endfor %}
+
+						</div>
 					</div>
 				</div>
-			{% endfor %}
-		</table>
+			</div>
+
+		</div>
+		<!-- container table down  -->
+		<div class="col-12" id="colMain2General-down1">
+			<div class="titleLists">
+				<h5></h5>
+			</div>
+
+
+		</div>
+
 	</div>
-</div>
 {% endblock %}
