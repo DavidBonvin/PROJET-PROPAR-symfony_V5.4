@@ -33,64 +33,68 @@ JE SUIS BIEN DANS LE CONTROLLER EXPERT
 {% endblock %}
 
 {% block main2 %}
-<!-- Row general Main2 -->
-					<div class="row p-4" id="rowMain2General1">
-						{% for message in app.flashes('success') %}
+	<!-- Row general Main2 -->
+	<div class="row p-4" id="rowMain2General">
+		{% for message in app.flashes('success') %}
 			<div class=" alert alert-success">
 				{{message}}
 			</div>
 		{% endfor %}
-						<!-- container list en cours  up -->
-						<div class="col-12" id="colMain2General-up1">
-							<div class="titleLists">
+		<!-- container list en cours  up -->
+		<div class="col-12" id="colMain2General-up1">
+			<div class="titleLists">Opérations en cours</div>
+			<!-- Container  title et contenu -->
+			<div class="container" id="Container_fondo_lists">
+				<div class="row" id="row_title_expert">
+					<p class="subtitle"></p>
+				</div>
+				<div class="row " id="row_List_elemente">
+					<div class="contListElement">
+						<div class="row rolistelement">
+						{% for commandes in commandeProfil %}
+							<div class="col-12 elementosLists">
+							
+									<div class="container container2">
+										
+										<div class="row row2">
+											<div class="col-1 divNcNc">
+												<div class="idCommande">{{commandes.id}}</div>
+												<div></div>
+											</div>
+											<div class="col-5 divNcNc">
+												<div class="nomCommande">{{commandes.nomCommande}}</div>
+												<div class="nomClient">{{commandes.client.nom}}</div>
+											</div>
+											<div class="col-3 divNcNc">
+												<div>ii</div>
+												<div class="divDate2">{{ commandes.date|date("d/m/Y") }}</div>
+											</div>
+											<div class="col-3 btnTerminer">
+												<form method="post" action="{{path('expert_operations_terminer',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment terminer la commande ?');">
+													<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ commandes.id)}}">
+													<input type="submit" class="btn btn-primary" value="Terminer"></form>
+											</div>
+										</div>
+										
+									</div>
 								
 							</div>
-							<!-- Container  title et contenu -->
-							<div class="container" id="Container_fondo_lists">
-								<div class="row" id="row_title_expert">
-									<p class="subtitle">subtitle</p>
-								</div>
-								<div class="row " id="row_List_elemente">
-									<div class="contListElement">
-										<div class="row rolistelement">
-											<div class="col-12 elementosLists">
-												{% for commandes in commandeProfil %}
-												<div class="container container2" >
-													<div class="row row2">
-														<div class="col-1 divNcNc"><div class="idCommande">1.</div><div></div></div>
-														<div class="col-5 divNcNc"><div class="nomCommande">{{commandes.nomCommande}}</div><div class="nomClient">{{commandes.client.nom}}</div></div>
-														<div class="col-3 divNcNc"><div>ll</div><div class="divDate2">{{ commandes.date|date("d/m/Y") }}</div></div>
-														<div class="col-3 btnTerminer"><form method="post" action="{{path('expert_operations_terminer',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment terminer la commande ?');">
-															<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ commandes.id)}}">
-															<input type="submit" class="btn btn-successs" value="Terminer"></form></div>
-													</div>
-												</div>
-												{% endfor %}
-											</div>
-											<div class="col-12 elementosLists"></div>
-											<div class="col-12 elementosLists"></div>
-											<div class="col-12 elementosLists"></div>
-											<div class="col-12 elementosLists"></div>
-											<div class="col-12 elementosLists"></div>
-											<div class="col-12 elementosLists"></div>
-											<div class="col-12 elementosLists"></div>
-											<div class="col-12 elementosLists"></div>
-											<div class="col-12 elementosLists"></div>
-
-										</div>
-									</div>
-								</div>
-							</div>
+							{% endfor %}
 
 						</div>
-						<!-- container table down  -->
-						<div class="col-12" id="colMain2General-down1">
-							<div class="titleLists">
-								<h5>Foother</h5>
-							</div>
-
-
-						</div>
-
 					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- container table down  -->
+		<div class="col-12" id="colMain2General-down1">
+			<div class="titleLists">
+				<h5></h5>
+			</div>
+
+
+		</div>
+
+	</div>
 {% endblock %}

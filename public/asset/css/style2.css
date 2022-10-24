@@ -1,0 +1,94 @@
+body {
+  width: 100%;
+  height: 100vh;
+}
+.sidevarstatic {
+  width: 100%;
+  height: 100vh;
+  background-color: #3D6A9E;
+}
+#main {
+  background-color: #DEDEDE;
+  height: 100vh;
+}
+#navbartop {
+  background-color:#3D6A9E;
+  height:10%;
+  width: 100%;
+}
+.logo {
+width: 100%;
+padding: 10%; 
+}
+.listLateral  {
+  color: white;
+  
+}
+.listLateral a  {
+ 
+  color: white;
+}
+#peremain2 {
+height: 90%;
+overflow: auto;
+
+}
+
+.cadre{
+  /* position: absolute;
+  width: 60%;
+  height: 530px;
+  left: 32%;
+  top: 17%; */
+  background: rgb(220, 220, 220);
+  margin-left: 10%;
+  border-radius: 15px;
+}
+h2{
+/* width: 348px; */
+
+text-align: center;
+font-family: 'Outfit';
+font-style: normal;
+/* font-weight: 400; */
+/* font-size: 40px; */
+color:#3d6a9e;
+} 
+.operations{
+  width: 723.67px;
+  height: 115.08px;
+  background: #3D6A9E;
+  border-radius: 10px;
+}
+.parent {
+
+background: #3D6A9E;
+border-radius: 10px;
+margin-bottom: 2%;
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.div1 { grid-area: 1 / 1 / 2 / 6; }
+
+.tr-tableau{
+  background-color: #3d6a9e;
+  color: white;
+}
+#divRowLogin {
+  height: 80%;
+}
+#containerScrollLists{
+  min-height: 30%;
+  max-height: 35%;
+  overflow-y: scroll;
+  min-width: 990px;
+  max-width: 1235px;
+  margin: auto;
+  padding: auto;
+  position: fixed;
+
+}

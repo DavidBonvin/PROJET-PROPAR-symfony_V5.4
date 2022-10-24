@@ -1,45 +1,55 @@
 
+:root{
+  --whiteAPP: #ffffff;
+  --blackApp: #000000;
+  --blueApp:#3d6a9e;
+  --text-titles-petite: 1rem;
+  --size-texte-moyen: 1.25rem;
+  --size-texte-grande: 1.50rem;
+  --size-texte-bg: 1.75rem;  
+  --font-weight-500:500; 
+}
 	#rowMain2General1 {
 		
 		height: 90vh;
 	}
 	#colMain2General-up1 {
-		background-color: beige;
+		background-color:var(--whiteAPP);
 		height: 70vh;
 
 	}
 
 	#colMain2General-down1 {
-		background-color: blanchedalmond;
+		background-color: var(--whiteAPP);
 		height: 10vh;
 	}
 
 	#Container_fondo_lists {
-		background-color: aquamarine;
+		background-color: var(--whiteAPP);
 		width: 95%;
 		height: 85%;
 	}
 
 	#row_title_expert {
-		background-color: beige;
-		height: 15%;
+		background-color:var(--whiteAPP);
+		height: 6%;
 	}
 
 
 
 
 	#row_List_elemente {
-		background-color: antiquewhite;
+		
 		height: 84%;
 		color: white;
 	}
 
 	.elementosLists {
-		background-color: darkcyan;
+		background-color: var(--blueApp);
 		border-radius: 15px;
 		margin-bottom: 5px;
 		
-		height: 25%;
+		height: 23%;
 	}
 	.contListElement{
 		height: 100%;
@@ -47,6 +57,7 @@
 	}
 	.rolistelement{
 		height: 100%;
+		
 	}
 	.container1{
 		width: 100%;
@@ -55,6 +66,7 @@
 	.row2{
 		width: 100%;
 		height: 100%;
+	
 	}
 	.btnTerminer {
 		text-align: end;
@@ -72,5 +84,10 @@
 	.subtitle{
 		text-align: center;
     font-size: x-large;
-		color: black;
+		color: var(--blueApp);
+	}
+	.titleLists {
+		text-align: center;
+    font-size: x-large;
+		color: var(--blueApp);
 	}
