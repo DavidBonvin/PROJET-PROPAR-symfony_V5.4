@@ -1,0 +1,76 @@
+
+	#rowMain2General1 {
+		
+		height: 90vh;
+	}
+	#colMain2General-up1 {
+		background-color: beige;
+		height: 70vh;
+
+	}
+
+	#colMain2General-down1 {
+		background-color: blanchedalmond;
+		height: 10vh;
+	}
+
+	#Container_fondo_lists {
+		background-color: aquamarine;
+		width: 95%;
+		height: 85%;
+	}
+
+	#row_title_expert {
+		background-color: beige;
+		height: 15%;
+	}
+
+
+
+
+	#row_List_elemente {
+		background-color: antiquewhite;
+		height: 84%;
+		color: white;
+	}
+
+	.elementosLists {
+		background-color: darkcyan;
+		border-radius: 15px;
+		margin-bottom: 5px;
+		
+		height: 25%;
+	}
+	.contListElement{
+		height: 100%;
+		overflow-y: scroll;
+	}
+	.rolistelement{
+		height: 100%;
+	}
+	.container1{
+		width: 100%;
+		height: 100%;
+	}
+	.row2{
+		width: 100%;
+		height: 100%;
+	}
+	.btnTerminer {
+		text-align: end;
+    margin: auto;
+	}
+
+	.container2{
+		height: 100%;
+	}
+	.divNcNc{
+		display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+	}
+	.subtitle{
+		text-align: center;
+    font-size: x-large;
+		color: black;
+	}

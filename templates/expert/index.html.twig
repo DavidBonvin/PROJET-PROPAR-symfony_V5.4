@@ -33,40 +33,64 @@ JE SUIS BIEN DANS LE CONTROLLER EXPERT
 {% endblock %}
 
 {% block main2 %}
-<div class="row p-4 mx-auto">
-	<div class="cadre col-10 row p-4">
-		{% for message in app.flashes('success') %}
+<!-- Row general Main2 -->
+					<div class="row p-4" id="rowMain2General1">
+						{% for message in app.flashes('success') %}
 			<div class=" alert alert-success">
 				{{message}}
 			</div>
 		{% endfor %}
-		<table>
-			<h2>Opérations en cours</h2>
-			<thead>
-				<tr>
-					<th scope="col">nom de commande</th>
-					<th scope="col">date</th>
-					<th scope="col">statut</th>
-					<th scope="col">nom du client</th>
-					<th scope="col">type d' operation</th>
-				</tr>
-			</thead>
+						<!-- container list en cours  up -->
+						<div class="col-12" id="colMain2General-up1">
+							<div class="titleLists">
+								
+							</div>
+							<!-- Container  title et contenu -->
+							<div class="container" id="Container_fondo_lists">
+								<div class="row" id="row_title_expert">
+									<p class="subtitle">subtitle</p>
+								</div>
+								<div class="row " id="row_List_elemente">
+									<div class="contListElement">
+										<div class="row rolistelement">
+											<div class="col-12 elementosLists">
+												{% for commandes in commandeProfil %}
+												<div class="container container2" >
+													<div class="row row2">
+														<div class="col-1 divNcNc"><div class="idCommande">1.</div><div></div></div>
+														<div class="col-5 divNcNc"><div class="nomCommande">{{commandes.nomCommande}}</div><div class="nomClient">{{commandes.client.nom}}</div></div>
+														<div class="col-3 divNcNc"><div>ll</div><div class="divDate2">{{ commandes.date|date("d/m/Y") }}</div></div>
+														<div class="col-3 btnTerminer"><form method="post" action="{{path('expert_operations_terminer',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment terminer la commande ?');">
+															<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ commandes.id)}}">
+															<input type="submit" class="btn btn-successs" value="Terminer"></form></div>
+													</div>
+												</div>
+												{% endfor %}
+											</div>
+											<div class="col-12 elementosLists"></div>
+											<div class="col-12 elementosLists"></div>
+											<div class="col-12 elementosLists"></div>
+											<div class="col-12 elementosLists"></div>
+											<div class="col-12 elementosLists"></div>
+											<div class="col-12 elementosLists"></div>
+											<div class="col-12 elementosLists"></div>
+											<div class="col-12 elementosLists"></div>
+											<div class="col-12 elementosLists"></div>
 
-			{% for commandes in commandeProfil %}
-				<div class="parent">
-					<div class="div1">
-						{{commandes.nomCommande}}
-						{{ commandes.date|date("d/m/Y") }}
-						{{commandes.statut}}
-						{{commandes.client.nom}}
-						{{commandes.operation.typeoperation}}
-						<form method="post" action="{{path('expert_operations_terminer',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment terminer la commande ?');">
-							<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ commandes.id)}}">
-							<input type="submit" class="btn btn-successs" value="Terminer"></form>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<!-- container table down  -->
+						<div class="col-12" id="colMain2General-down1">
+							<div class="titleLists">
+								<h5>Foother</h5>
+							</div>
+
+
+						</div>
+
 					</div>
-				</div>
-			{% endfor %}
-		</table>
-	</div>
-</div>
 {% endblock %}
