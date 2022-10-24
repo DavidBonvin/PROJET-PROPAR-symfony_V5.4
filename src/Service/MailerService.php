@@ -20,7 +20,7 @@ class MailerService
     public function sendEmail(string $to): void
     {
         $email = (new Email())
-            ->from(new Address('cloudme2023@gmail.com', 'Propar'))
+            ->from(new Address('ledave.musique@gmail.com', 'Propar'))
             ->to($to)
             //->cc('cc@example.com')
             //->bcc('bcc@example.com')
@@ -31,8 +31,9 @@ class MailerService
             Votre facture est disponible ci-joint !<br><br>
             Propar vous remercie pour votre confiance !</p>")
             // ->text(fopen("/Users/mohirmehhat/Workspace/PHP/PROPAR/templates/pdf/textEmail.txt", "r"))
-            ->attachFromPath('/Users/mohirmehhat/Workspace/PHP/PROPAR/public/pdf/facture.pdf');
+            //->attachFromPath('/Users/mohirmehhat/Workspace/PHP/PROPAR/public/pdf/facture.pdf');
         // ->attachFromPath('/Users/mohirmehhat/Workspace/PHP/PROPAR/public/pdf/facture.pdf');
+        ->attachFromPath('C:\Users\ledav\OneDrive\Escritorio\symfony\Applications\PROPAR\public\pdf\facture.pdf');
         $this->mailer->send($email);
     }
 }
