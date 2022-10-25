@@ -25,7 +25,15 @@
 {% endblock %}
 
 {% block main2 %}
-	<div class="cadre col-10 row p-4 mt-4">
+
+	<div class="row p-4 mx-auto">
+		<div class="container">
+			<div class="row p-2 my-4">
+				<div class="col">
+					<h4>Lists des employées</h4>
+				</div>
+			</div>
+		</div>
 		{% for message in app.flashes('wrong') %}
 			<div class="alert alert-danger">
 				{{message}}
@@ -36,8 +44,7 @@
 				{{message}}
 			</div>
 		{% endfor %}
-		<table>
-			<h2>Liste des opérations en attente</h2>
+		<table class="table">
 			<thead>
 				<tr>
 					<th scope="col">nom de commande</th>

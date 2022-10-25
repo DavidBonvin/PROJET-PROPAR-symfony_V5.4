@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dashboard
+{% block title %}Ajouter une commande
 {% endblock %}
 
 
@@ -32,16 +32,16 @@
 				{{message}}
 			</div>
 		{% endfor %}
-		<h2 style="color:black">Ajouter une commande</h2>
+		<h4>Ajouter une commande</h4>
 		{{ form_start(RegistrationCommandeType) }}
 		<div class="container" id="container_Regis_Commande_Button_ajout_Client">
-		<div class="row">
-		<div class="col">
-		<a class="btn btn-success" style='margin-bottom:2%' href="{{ path('app_registration_client_expert') }}">Ajout client</a>
+			<div class="row">
+				<div class="col">
+					<a class="btn btn-success" style='margin-bottom:2%' href="{{ path('app_registration_client_expert') }}">Ajout client</a>
+				</div>
+			</div>
 		</div>
-		</div>
-		</div>
-		
+
 		{{ form_row(RegistrationCommandeType.nomCommande)}}
 		{{ form_row(RegistrationCommandeType.date)}}
 		{{ form_row(RegistrationCommandeType.client)}}
@@ -49,13 +49,13 @@
 		{{ form_end(RegistrationCommandeType) }}
 	</div>
 	{# <script>
-
-const alerts = document.querySelectorAll('[class*="alert alert-success"]')
-for (const alert of alerts) {
-    setTimeout( function() {
-        const bootstrapAlert = bootstrap.Alert.getOrCreateInstance(alert);
-        bootstrapAlert.close();
-    }, 200);
-}
-		</script> #}
+	
+	const alerts = document.querySelectorAll('[class*="alert alert-success"]')
+	for (const alert of alerts) {
+	    setTimeout( function() {
+	        const bootstrapAlert = bootstrap.Alert.getOrCreateInstance(alert);
+	        bootstrapAlert.close();
+	    }, 200);
+	}
+			</script> #}
 {% endblock %}

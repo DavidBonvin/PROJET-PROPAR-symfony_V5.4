@@ -59,6 +59,8 @@ background-color: var(--whiteAPP);
   background: rgb(220, 220, 220);
   margin-left: 10%;
   border-radius: 15px;
+  
+
 }
 h2{
 /* width: 348px; */
@@ -111,4 +113,16 @@ grid-row-gap: 0px;
 #container_Regis_Commande_Button_ajout_Client{
   display: flex;
   justify-content: end;
+}
+#idContainerNavBar{
+justify-content: end;
+}
+#rownavBarAccueil{
+  width: 60%;
+  justify-content: end;
+  padding-right: 30px;
+}
+#colnavbarConecteDesconect{
+  display: flex;
+  justify-content: space-evenly;
 }

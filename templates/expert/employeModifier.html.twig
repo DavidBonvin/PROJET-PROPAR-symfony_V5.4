@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register
+{% block title %}Modifier un employé
 {% endblock %}
 {% block monTitre %}Inscription sur le site
 {% endblock %}
@@ -24,52 +24,51 @@
 	</lu>
 {% endblock %}
 {% block main2 %}
-<div class="row p-4 mx-auto">
-<div class="container">
-<div class="row p-2 my-4">
-<div class="col">
-<h4>Modifier une employe</h4>
-</div>
-</div>
-</div>
-	{% for message in app.flashes('success') %}
-		<div class="alert alert-success">
-			{{message}}
+	<div class="row p-4 mx-auto">
+		<div class="container">
+			<div class="row p-2 my-4">
+				<div class="col">
+					<h4>Modifier une employe</h4>
+				</div>
+			</div>
 		</div>
-	{% endfor %}
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">ID</th>
-				<th scope="col">Nom</th>
-				<th scope="col">Prenom</th>
-				<th scope="col">Email</th>
-				<th scope="col">Role</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for employe in employe %}
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{message}}
+			</div>
+		{% endfor %}
+		<table class="table">
+			<thead>
 				<tr>
-					<th scope="row">{{ employe.id }}</th>
-					<td>{{ employe.nom }}</td>
-					<td>{{ employe.prenom }}</td>
-					<td>{{ employe.email }}</td>
-					<td>{{ employe.roles[0] }}</td>
-					<td>
-						<a href="{{path('expert_modifier',{'id': employe.id})}}" class="btn btn-primary">Modifier
-						</a>
-					</td>
-					<td>
-						<form method="post" class="col" action="{{path('employe_delete',{'id': employe.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer?');">
-							<input type="hidden" name="_method" value="delete">
-							<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ employe.id)}}">
-							<input type="submit" class="btn btn-danger" value="supprimer" onsubmit="return confirm('Confirmer la suppression ?')">
-						</form>
-					</td>
+					<th scope="col">ID</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Prenom</th>
+					<th scope="col">Email</th>
+					<th scope="col">Role</th>
 				</tr>
-			{% endfor %}
+			</thead>
+			<tbody>
+				{% for employe in employe %}
+					<tr>
+						<th scope="row">{{ employe.id }}</th>
+						<td>{{ employe.nom }}</td>
+						<td>{{ employe.prenom }}</td>
+						<td>{{ employe.email }}</td>
+						<td>{{ employe.roles[0] }}</td>
+						<td>
+							<a href="{{path('expert_modifier',{'id': employe.id})}}" class="btn btn-primary">Modifier
+							</a>
+						</td>
+						<td>
+							<form method="post" class="col" action="{{path('employe_delete',{'id': employe.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer?');">
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ employe.id)}}">
+								<input type="submit" class="btn btn-danger" value="supprimer" onsubmit="return confirm('Confirmer la suppression ?')">
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 		</tbody>
-	</tbody>
-</table>
-</div>
-{% endblock %}
+	</table>
+</div>{% endblock %}

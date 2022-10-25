@@ -32,16 +32,25 @@
 					{#Contenu du 70% restent#}
 					<div class="col offset-3 p-0 " id="main">
 						<nav class="navbar " id="navbartop">
-							<div class="container-fluid" id="idContainer70">
-								{% if app.user %}
+							<div class="container-fluid" id="idContainerNavBar">
+							<div class="row" id="rownavBarAccueil">
+							{% if app.user %}
+							<div class="col-9" id="colnavbarConecteDesconect">
+								
 									<a style="color: white; margin-left: 1%">
 										Connecté :
 										{{ app.user.userIdentifier }}
 									</a>
 									<a href="{{ path('app_logout') }}" type="button" class="btn btn-danger">Déconnexion</a>
+									</div>
 								{% else %}
-									<a style="color: white; margin-left: 1%" href="{{ path('app_login') }}" role="button">Se connecter</a>
-								{% endif %}
+								<div class="col-3">
+									<a style="color: white; margin-left: 1%; text-decoration: none;" href="{{ path('app_login') }}" role="button">Se connecter</a>
+								
+							</div>
+							{% endif %}
+							</div>
+								
 							</div>
 						</nav>
 						<div class="container" id="peremain2" >
