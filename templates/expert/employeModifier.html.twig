@@ -25,6 +25,13 @@
 {% endblock %}
 {% block main2 %}
 <div class="row p-4 mx-auto">
+<div class="container">
+<div class="row p-2 my-4">
+<div class="col">
+<h4>Modifier une employe</h4>
+</div>
+</div>
+</div>
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success">
 			{{message}}

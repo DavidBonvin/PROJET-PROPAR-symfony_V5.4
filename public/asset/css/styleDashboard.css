@@ -41,7 +41,7 @@
 	#row_List_elemente {
 		
 		height: 84%;
-		color: white;
+		color:var(--whiteAPP);
 	}
 
 	.elementosLists {

@@ -13,17 +13,20 @@ body {
   width: 100%;
   height: 100vh;
 }
+#idContainer70 {
+background-color: var(--whiteAPP);
+}
 .sidevarstatic {
   width: 100%;
   height: 100vh;
-  background-color: #3D6A9E;
+  background-color:var(--blueApp);
 }
 #main {
-  background-color: #DEDEDE;
+  background-color:var(--whiteAPP);
   height: 100vh;
 }
 #navbartop {
-  background-color:#3D6A9E;
+  background-color:var(--blueApp);
   height:10%;
   width: 100%;
 }
@@ -32,12 +35,15 @@ width: 100%;
 padding: 10%; 
 }
 .listLateral  {
-  color: white;
+  color:var(--whiteAPP);
+  text-decoration: none;
   
 }
 .listLateral a  {
  
-  color: white;
+  color:var(--whiteAPP);
+  text-decoration: none;
+
 }
 #peremain2 {
 height: 90%;
@@ -64,17 +70,17 @@ font-family: 'Outfit';
 font-style: normal;
 /* font-weight: 400; */
 /* font-size: 40px; */
-color:#3d6a9e;
+color:var(--blueApp);
 } 
 .operations{
   width: 723.67px;
   height: 115.08px;
-  background: #3D6A9E;
+  background:var(--blueApp);
   border-radius: 10px;
 }
 .parent {
 
-background: #3D6A9E;
+background: var(--blueApp);
 border-radius: 10px;
 margin-bottom: 2%;
 display: grid;
@@ -87,7 +93,7 @@ grid-row-gap: 0px;
 .div1 { grid-area: 1 / 1 / 2 / 6; }
 
 .tr-tableau{
-  background-color: #3d6a9e;
+  background-color: var(--blueApp);
   color: white;
 }
 #divRowLogin {
@@ -103,4 +109,8 @@ grid-row-gap: 0px;
   padding: auto;
   position: fixed;
 
+}
+#container_Regis_Commande_Button_ajout_Client{
+  display: flex;
+  justify-content: end;
 }

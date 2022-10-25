@@ -28,9 +28,10 @@ class PriseCommandeController extends AbstractController
             $entityManager->persist($commande);
             $entityManager->flush();
 
-            $this->addFlash("success", "La commande a bien été ajouté");
+            
 
-            return $this->redirectToRoute('app_prise_commande_expert');
+            return $this->redirectToRoute('app_expert_operations');
+            $this->addFlash("success", "La commande a bien été ajouté");
         }
         return $this->render('expert/ajoutCommande.html.twig', [
             'RegistrationCommandeType' => $form->createView(),

@@ -26,7 +26,7 @@
 {% endblock %}
 
 {% block main2 %}
-	<div class="cadre col-10 row p-4">
+	<div class="cadre col-10 row p-4 mt-4">
 		{% for message in app.flashes('success') %}
 			<div class="alert alert-success">
 				{{message}}
@@ -34,8 +34,14 @@
 		{% endfor %}
 		<h2 style="color:black">Ajouter une commande</h2>
 		{{ form_start(RegistrationCommandeType) }}
-
+		<div class="container" id="container_Regis_Commande_Button_ajout_Client">
+		<div class="row">
+		<div class="col">
 		<a class="btn btn-success" style='margin-bottom:2%' href="{{ path('app_registration_client_expert') }}">Ajout client</a>
+		</div>
+		</div>
+		</div>
+		
 		{{ form_row(RegistrationCommandeType.nomCommande)}}
 		{{ form_row(RegistrationCommandeType.date)}}
 		{{ form_row(RegistrationCommandeType.client)}}

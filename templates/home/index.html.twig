@@ -32,7 +32,7 @@
                     <tbody>
                       {% for commandes in commandeEnCours %}
                       <tr >
-                        <th scope="row" class="ele_1">#Id</th>
+                        <th scope="row" class="ele_1">{{commandes.id}}</th>
                         <th scope="row" class="ele_2">{{commandes.nomCommande}}</th>
                         <th scope="row" class="ele_3">{{ commandes.date|date("d/m/Y") }}</th>
                         <th scope="row" class="ele_4">{{commandes.statut}}</th>
@@ -74,7 +74,7 @@
                     <tbody>
                       {% for commandes in commandeTermine %}
                       <tr>
-                        <th scope="row" class="ele_1">#Id</th>
+                        <th scope="row" class="ele_1">{{commandes.id}}</th>
                         <th scope="row" class="ele_2">{{commandes.nomCommande}}</th>
                         <th scope="row" class="ele_3">{{ commandes.date|date("d/m/Y") }}</th>
                         <th scope="row" class="ele_4">{{commandes.statut}}</th>
