@@ -3,4 +3,98 @@
 {% block title %}Hello HomeController!
 {% endblock %}
 
+<<<<<<< HEAD
 {% block main2 %}{% endblock %}
+=======
+{% block main2 %}
+	<div class="row p-4" id="rowMain2General1">
+            <!-- container list en cours -->
+            <div class="col-12" id="colMain2General-up">
+              <div class="titleLists">
+                <h5>Liste des operations en Cours</h5>
+              </div>
+                <!-- Container tableau title et contenu -->
+              <div class="ContainerTableauList">
+                <!-- Tableau pour les titles -->
+                <table class="table" id="titlesTable">
+                  <thead >
+                    <tr  class="titlesTR">
+                      <th scope="row" class="ele_T1">#Id</th>
+                      <th scope="row" class="ele_T2">Nom Commande</th>
+                      <th scope="row" class="ele_T3">Date</th>
+                      <th scope="row" class="ele_T4">Statut</th>
+                      <th scope="row" class="ele_T5">Nom du client</th>
+                      <th scope="row" class="ele_T6">Type op</th>
+                      <th scope="row" class="ele_T7">Id emp</th>
+                    </tr>
+                  </thead>
+                </table>
+                <!-- Container scroll et tableau de contenu -->
+                <div class="" id="ContenueTable">
+                  <table class="table">
+                    <tbody>
+                      {% for commandes in commandeEnCours %}
+                      <tr >
+                        <th scope="row" class="ele_1">{{commandes.id}}</th>
+                        <th scope="row" class="ele_2">{{commandes.nomCommande}}</th>
+                        <th scope="row" class="ele_3">{{ commandes.date|date("d/m/Y") }}</th>
+                        <th scope="row" class="ele_4">{{commandes.statut}}</th>
+                        <th scope="row" class="ele_5">{{commandes.client.nom}}</th>
+                        <th scope="row" class="ele_6">{{commandes.operation.typeoperation}}</th>
+                        <th scope="row" class="ele_7">{{commandes.user.nom|default('')}}</th>
+                      </tr>
+                      {% endfor %}
+                      
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- container table down  -->
+            <div class="col-12" id="colMain2General-down">
+              <div class="titleLists">
+                <h5>Liste des operations Terminées</h5>
+              </div>
+              <div class="ContainerTableauList">
+                <!-- Tableau pour les titles -->
+                <table class="table" id="titlesTable">
+                  <thead >
+                    <tr class="titlesTR">
+                      <th scope="row" class="ele_T1">#Id</th>
+                      <th scope="row" class="ele_T2">Nom Commande</th>
+                      <th scope="row" class="ele_T3">Date</th>
+                      <th scope="row" class="ele_T4">Statut</th>
+                      <th scope="row" class="ele_T5">Nom du client</th>
+                      <th scope="row" class="ele_T6">Type op</th>
+                      <th scope="row" class="ele_T7">Id emp</th>
+                    </tr>
+                  </thead>
+                </table>
+                <!-- Container scroll et tableau de contenu -->
+                <div class="" id="ContenueTable">
+                  <table class="table">
+                    <tbody>
+                      {% for commandes in commandeTermine %}
+                      <tr>
+                        <th scope="row" class="ele_1">{{commandes.id}}</th>
+                        <th scope="row" class="ele_2">{{commandes.nomCommande}}</th>
+                        <th scope="row" class="ele_3">{{ commandes.date|date("d/m/Y") }}</th>
+                        <th scope="row" class="ele_4">{{commandes.statut}}</th>
+                        <th scope="row" class="ele_5">{{commandes.client.nom}}</th>
+                        <th scope="row" class="ele_6">{{commandes.operation.typeoperation}}</th>
+                        <th scope="row" class="ele_7">{{commandes.user.nom|default('')}}</th>
+                      </tr>
+                      {% endfor %}
+                      
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+	{% endblock %}
+>>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d

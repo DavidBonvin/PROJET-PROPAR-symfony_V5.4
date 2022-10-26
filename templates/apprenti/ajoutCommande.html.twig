@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Register
+{% endblock %}
+{% block monTitre %}Inscription sur le site
+{% endblock %}
+
+{% block navbarlists %}
+	<ul>
+		<a href="{{ path('app_apprenti') }}">Tableau de bord</a>
+		<br/><br/>
+		<a href="{{ path('app_apprenti_operations') }}">Ajouter une opération</a>
+		<br/><br/>
+		<a href="{{ path('apprenti_liste_operations') }}">Lister mes opérations</a>
+		<br/><br/>
+		<a href="{{ path('app_prise_commande_apprenti') }}">Ajouter commande client</a>
+		<br/><br/>
+	
+	</ul>
+{% endblock %}
+{% block main2 %}
+<div class="cadre col-10 row p-4 mt-4">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{message}}
+			</div>
+		{% endfor %}
+		<h4>Ajouter une commande</h4>
+		{{ form_start(RegistrationCommandeType) }}
+		<div class="container" id="container_Regis_Commande_Button_ajout_Client">
+			<div class="row">
+				<div class="col">
+					<a class="btn btn-success" style='margin-bottom:2%' href="{{ path('app_registration_client_apprenti') }}">Ajout client</a>
+				</div>
+			</div>
+		</div>
+
+		{{ form_row(RegistrationCommandeType.nomCommande)}}
+		{{ form_row(RegistrationCommandeType.date)}}
+		{{ form_row(RegistrationCommandeType.client)}}
+		{{ form_row(RegistrationCommandeType.operation)}}
+		{{ form_end(RegistrationCommandeType) }}
+	</div>
+{% endblock %}

@@ -8,35 +8,139 @@ body {
     background-color: #3D6A9E;
 }
 #main {
-    background-color: #ecf4ec;
+    background-color: #DEDEDE;
     height: 100vh;
-
 }
 #navbartop {
     background-color:#3D6A9E;
     height:10%;
     width: 100%;
-    
 }
 .logo {
   width: 100%;
-  padding: 10%;
-    
+  padding: 10%; 
 }
 .listLateral  {
     color: white;
-    margin-top: 30%;
-    margin-left: 10%;
-
-}
-.listLateral a {
-    color: white;
     
-
+}
+.listLateral a  {
+   
+    color: white;
 }
 #peremain2 {
   height: 90%;
   overflow: auto;
-  
+ 
 }
 
+.cadre{
+    position: absolute;
+    width: 65%;
+    left: 21%;
+    top: 17%;
+    height: 75%;
+    background: rgb(220, 220, 220);
+    margin-left: 10%;
+    border-radius: 15px;
+    overflow-y: scroll;
+}
+.cadreLogin{
+    position: absolute;
+    padding: 4%;
+    width: 50%;
+    left: 28%;
+    top: 20%;
+    height: 60%;
+    background: rgb(220, 220, 220);
+    margin-left: 10%;
+    border-radius: 15px;
+}
+.cadreAccueil1{
+    position: absolute;
+    width: 33%;
+    left: 18%;
+    height: 70%;
+    background: rgb(220, 220, 220);
+    margin-left: 10%;
+    border-radius: 15px;
+    overflow-y: scroll;
+    margin-top: 6rem;
+}
+.cadreAcceuil2{
+    position: absolute;
+    width: 33%;
+    left: 54%;
+    height: 70%;
+    background: rgb(220, 220, 220);
+    margin-left: 10%;
+    border-radius: 15px;
+    overflow-y: scroll;
+    margin-top: 6rem;
+}
+h2{
+text-align: center;
+color: #FFFFFF;
+} 
+h1{
+text-align: center;
+} 
+/* .operations{
+    width: 723.67px;
+    height: 115.08px;
+    background: #3D6A9E;
+    border-radius: 10px;
+} */
+
+.parent {
+background: #3D6A9E;
+border-radius: 10px;
+margin-bottom: 2%;
+padding: 2%;
+color:white;
+font-size: 10px;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+
+.tr-tableau{
+    background-color: #3d6a9e;
+    color: white;
+}
+#divRowLogin {
+    height: 80%;
+}
+#containerScrollLists{
+    min-height: 30%;
+    max-height: 35%;
+    overflow-y: scroll;
+    min-width: 990px;
+    max-width: 1235px;
+    margin: auto;
+    padding: auto;
+    position: fixed;
+
+}
+
+/* ////////////PARTI ACCUEIL////////// */
+.parentAcc {
+    background: #3D6A9E;
+    border-radius: 10px;
+    margin-bottom: 8%;
+    padding: 6%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .div1A { grid-area: 1 / 1 / 2 / 2;
+    min-height: 3rem; }
+    .div2A { grid-area: 1 / 2 / 2 / 3; }
+    .div3A { grid-area: 1 / 3 / 2 / 4; }
+    .div4A { grid-area: 1 / 4 / 2 / 5; }
+    .div5A { grid-area: 1 / 5 / 2 / 6; }

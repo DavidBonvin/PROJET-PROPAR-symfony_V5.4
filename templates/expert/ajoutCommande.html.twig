@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une commande
+{% endblock %}
+
+
+{% block navbarlists %}
+	<lu>
+		<a href="{{ path('app_expert') }}">Tableau de bord</a>
+		<br/><br/>
+		<a href="{{ path('app_expert_operations') }}">Ajouter une opération</a>
+		<br/><br/>
+		<a href="{{ path('app_liste_operations') }}">Lister mes opérations</a>
+		<br/><br/>
+		<a href="{{ path('liste_employe') }}">Liste des employés</a>
+		<br/><br/>
+		<a href="{{ path('inscription') }}">Ajouter un employé</a>
+		<br/><br/>
+		<a href="{{ path('liste_employe_modifier') }}">Modifier un employé</a>
+		<br/><br/>
+		<a href="{{ path('app_prise_commande_expert') }}">Ajouter commande client</a>
+		<br/><br/>
+		<a href="{{ path('app_chiffre_affaire') }}">Chiffre d'affaire</a>
+	</lu>
+
+{% endblock %}
+
+{% block main2 %}
+	<div class="cadre col-10 row p-4 mt-4">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{message}}
+			</div>
+		{% endfor %}
+		<h4>Ajouter une commande</h4>
+		{{ form_start(RegistrationCommandeType) }}
+		<div class="container" id="container_Regis_Commande_Button_ajout_Client">
+			<div class="row">
+				<div class="col">
+					<a class="btn btn-success" style='margin-bottom:2%' href="{{ path('app_registration_client_expert') }}">Ajout client</a>
+				</div>
+			</div>
+		</div>
+
+		{{ form_row(RegistrationCommandeType.nomCommande)}}
+		{{ form_row(RegistrationCommandeType.date)}}
+		{{ form_row(RegistrationCommandeType.client)}}
+		{{ form_row(RegistrationCommandeType.operation)}}
+		{{ form_end(RegistrationCommandeType) }}
+	</div>
+	{# <script>
+	
+	const alerts = document.querySelectorAll('[class*="alert alert-success"]')
+	for (const alert of alerts) {
+	    setTimeout( function() {
+	        const bootstrapAlert = bootstrap.Alert.getOrCreateInstance(alert);
+	        bootstrapAlert.close();
+	    }, 200);
+	}
+			</script> #}
+{% endblock %}

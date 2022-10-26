@@ -1,0 +1,128 @@
+
+:root{
+  --whiteAPP: #ffffff;
+  --blackApp: #000000;
+  --blueApp:#3d6a9e;
+  --text-titles-petite: 1rem;
+  --size-texte-moyen: 1.25rem;
+  --size-texte-grande: 1.50rem;
+  --size-texte-bg: 1.75rem;  
+  --font-weight-500:500; 
+}
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+.sidevarstatic {
+  width: 100%;
+  height: 100vh;
+  background-color:var(--blueApp);
+}
+#main {
+  background-color:var(--whiteAPP);
+  height: 100vh;
+}
+#navbartop {
+  background-color:var(--blueApp);
+  height:10%;
+  width: 100%;
+}
+.logo {
+width: 100%;
+padding: 10%; 
+}
+.listLateral  {
+  color:var(--whiteAPP);
+  text-decoration: none;
+  
+}
+.listLateral a  {
+ 
+  color:var(--whiteAPP);
+  text-decoration: none;
+
+}
+#peremain2 {
+height: 90%;
+overflow: auto;
+background-color: var(--whiteAPP);
+
+}
+
+.cadre{
+  /* position: absolute;
+  width: 60%;
+  height: 530px;
+  left: 32%;
+  top: 17%; */
+  background: rgb(220, 220, 220);
+  margin-left: 10%;
+  border-radius: 15px;
+  
+
+}
+h2{
+/* width: 348px; */
+
+text-align: center;
+font-family: 'Outfit';
+font-style: normal;
+/* font-weight: 400; */
+/* font-size: 40px; */
+color:var(--blueApp);
+} 
+.operations{
+  width: 723.67px;
+  height: 115.08px;
+  background:var(--blueApp);
+  border-radius: 10px;
+}
+.parent {
+
+background: var(--blueApp);
+border-radius: 10px;
+margin-bottom: 2%;
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.div1 { grid-area: 1 / 1 / 2 / 6; }
+
+.tr-tableau{
+  background-color: var(--blueApp);
+  color: white;
+}
+#divRowLogin {
+  height: 80%;
+}
+#containerScrollLists{
+  min-height: 30%;
+  max-height: 35%;
+  overflow-y: scroll;
+  min-width: 990px;
+  max-width: 1235px;
+  margin: auto;
+  padding: auto;
+  position: fixed;
+
+}
+#container_Regis_Commande_Button_ajout_Client{
+  display: flex;
+  justify-content: end;
+}
+#idContainerNavBar{
+justify-content: end;
+}
+#rownavBarAccueil{
+  width: 60%;
+  justify-content: end;
+  padding-right: 30px;
+}
+#colnavbarConecteDesconect{
+  display: flex;
+  justify-content: space-evenly;
+}
