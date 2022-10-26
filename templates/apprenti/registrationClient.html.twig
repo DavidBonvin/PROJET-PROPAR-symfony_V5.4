@@ -11,10 +11,10 @@
 	</li>
 
 	<li class='mt-4'>
-		<a href="">Ajouter une opération</a>
+		<a href="app_apprenti_operations">Ajouter une opération</a>
 	</li>
 	<li class='mt-4'>
-		<a href="">Liste mes opérations</a>
+		<a href="apprenti_liste_operations">Liste mes opérations</a>
 	</li>
 	<li class='mt-4'>
 		<a href="{{ path('app_prise_commande_apprenti') }}">Ajouter commande client</a>
@@ -23,11 +23,123 @@
 {% endblock %}
 {% block main2 %}
 	<div class="row p-4 mx-auto">
+
 		{% for message in app.flashes('success') %}
 			<div class="alert alert-success">
 				{{message}}
 			</div>
 		{% endfor %}
-		{{ form(RegistrationClientType) }}
-		</div>
-	{% endblock %}
+
+
+		{{ form_start(RegistrationClientType) }}
+		{{ form_row(RegistrationClientType.nom)}}
+		{{ form_row(RegistrationClientType.prenom)}}
+		{{ form_row(RegistrationClientType.nomSociete)}}
+		{{ form_row(RegistrationClientType.email)}}
+		{{ form_row(RegistrationClientType.adresse)}}
+		<div class="address-feedback position-absolute list-group" style="z-index:1100;"></div>
+
+
+		<script>
+			var currentFocus = -1;
+var fetchTrigger = 0;
+
+function setActive() {
+var nbVal = $("div.address-feedback a").length;
+/*a function to classify an item as "active":*/
+if (! nbVal) 
+return false;
+
+
+
+/*start by removing the "active" class on all items:*/
+$('div.address-feedback a').removeClass("active");
+
+// Bidouille mathématique pour contraindre le focus dans la plage du nombre de résultats
+currentFocus = ((currentFocus + nbVal - 1) % nbVal) + 1;
+
+$('div.address-feedback a:nth-child(' + currentFocus + ')').addClass("active");
+}
+
+// Au clic sur une adresse suggérée, on ventile l'adresse dans les champs appropriés. On espionne mousedown plutôt que click pour l'attraper avant la perte de focus du champ adresse.
+$('div.address-feedback').on("mousedown", "a", function (event) { // Stop la propagation par défaut
+event.preventDefault();
+event.stopPropagation();
+
+$("#registration_client_adresse").val($(this).attr("data-name"));
+
+
+$('.address-feedback').empty();
+});
+
+// On espionne le clavier dans le champ adresse pour déclencher les actions qui vont bien
+$("#registration_client_adresse").keyup(function (event) { // Stop la propagation par défaut
+event.preventDefault();
+event.stopPropagation();
+
+if (event.keyCode === 38) { // Flèche HAUT
+currentFocus--;
+setActive();
+return false;
+} else if (event.keyCode === 40) { // Flèche BAS
+currentFocus++;
+setActive();
+return false;
+} else if (event.keyCode === 13) { // Touche ENTREE
+if (currentFocus > 0) { // On simule un clic sur l'élément actif
+$("div.address-feedback a:nth-child(" + currentFocus + ")").mousedown();
+}
+return false;
+}
+
+// Si on arrive ici c'est que l'user a avancé dans la saisie : on réinitialise le curseur de sélection.
+$('div.address-feedback a').removeClass("active");
+currentFocus = 0;
+
+// On annule une éventuelle précédente requête en attente
+clearTimeout(fetchTrigger);
+
+// Si le champ adresse est vide, on nettoie la liste des suggestions et on ne lance pas de requête.
+let rue = $("#registration_client_adresse").val();
+if (rue.length === 0) {
+$('.address-feedback').empty();
+return false;
+}
+
+// On lance une minuterie pour une requête vers l'API.
+fetchTrigger = setTimeout(function () { // On lance la requête sur l'API
+$.get("https://api-adresse.data.gouv.fr/search/?q=8+bd+du+port", {
+q: rue,
+limit: 5,
+autocomplete: 1
+}, function (data, status, xhr) {
+let liste = "";
+$.each(data.features, function (i, obj) { // J'ajoute chaque élément dans une liste
+let cooladdress = obj.properties.name + " " + obj.properties.postcode + " <strong>" + obj.properties.city + "</strong>";
+liste += '<a class="list-group-item list-group-item-action py-1" href="#" name="' + obj.properties.label + '" data-name="' + obj.properties.name + ' ' + obj.properties.postcode + ' ' + obj.properties.city + '">' + cooladdress + '</a>';
+});
+$('.address-feedback').html(liste);
+}, 'json');
+}, 500);
+});
+
+// On cache la liste si le champ adresse perd le focus
+$("#registration_client_adresse").focusout(function () {
+$('.address-feedback').empty();
+});
+
+// On annule le comportement par défaut des touches entrée et flèches si une liste de suggestion d'adresses est affichée
+$("#registration_client_adresse").keydown(function (e) {
+if ($("div.address-feedback a").length > 0 && (e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 13)) {
+e.preventDefault();
+}
+});
+		</script>
+
+
+		<input type="submit" id="submit" value="Enregistrer" class="btn btn-primary mx-auto"/>
+
+		{{ form_end(RegistrationClientType) }}
+	</div>
+
+{% endblock %}

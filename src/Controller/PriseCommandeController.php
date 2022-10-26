@@ -78,7 +78,7 @@ class PriseCommandeController extends AbstractController
 
             return $this->redirectToRoute('app_prise_commande_apprenti');
         }
-        return $this->render('apprenti/commande.html.twig', [
+        return $this->render('apprenti/ajoutCommande.html.twig', [
             'RegistrationCommandeType' => $form->createView(),
         ]);
     }
