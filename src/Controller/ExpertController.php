@@ -54,7 +54,7 @@ class ExpertController extends AbstractController
     /**
      * @Route("/expert/operations/{id}", name="expert_operations", methods="POST|GET")
      */
-    public function comfirmerOperation(Commande $commandes, Request $request, EntityManagerInterface $entityManager, CommandeRepository $repository): Response
+    public function confirmerOperation(Commande $commandes, Request $request, EntityManagerInterface $entityManager, CommandeRepository $repository): Response
     {
         if (!$commandes) {
             $commandes = new Commande();

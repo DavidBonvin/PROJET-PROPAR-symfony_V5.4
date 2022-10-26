@@ -5,21 +5,13 @@
 
 {% block navbarlists %}
 	<lu>
-		<a href="{{ path('app_expert') }}">Tableau de bord</a>
+		<a href="{{ path('app_apprenti') }}">Tableau de bord</a>
 		<br/><br/>
-		<a href="{{ path('app_expert_operations') }}">Ajouter une opération</a>
+		<a href="{{ path('app_apprenti_operations') }}">Ajouter une opération</a>
 		<br/><br/>
-		<a href="{{ path('app_liste_operations') }}">Lister mes opérations</a>
+		<a href="{{ path('apprenti_liste_operations') }}">Lister mes opérations</a>
 		<br/><br/>
-		<a href="{{ path('liste_employe') }}">Liste des employés</a>
-		<br/><br/>
-		<a href="{{ path('inscription') }}">Ajouter un employé</a>
-		<br/><br/>
-		<a href="{{ path('liste_employe_modifier') }}">Modifier un employé</a>
-		<br/><br/>
-		<a href="{{ path('app_prise_commande_expert') }}">Ajouter commande client</a>
-		<br/><br/>
-		<a href="{{ path('app_chiffre_affaire') }}">Chiffre d'affaire</a>
+		
 	</lu>
 
 {% endblock %}
@@ -30,7 +22,7 @@
 		<div class="container">
 			<div class="row p-2 my-4">
 				<div class="col">
-					<h4>Lists des operations</h4>
+					<h4>Listes des commandes</h4>
 				</div>
 			</div>
 		</div>
@@ -72,7 +64,7 @@
 							{{commandes.operation.typeoperation}}
 						</td>
 						<td>
-							<form method="post" class="col" action="{{path('expert_operations',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment Ajouter la commande ?');">
+							<form method="post" class="col" action="{{path('apprenti_operations',{'id': commandes.id}) }}" onsubmit="return confirm('Voulez-vous vraiment Ajouter la commande ?');">
 
 								<input type="submit" class="btn btn-success" value="ajouter">
 							</form>
