@@ -21,18 +21,6 @@ class CommandeRepository extends ServiceEntityRepository
         parent::__construct($registry, Commande::class);
     }
 
-<<<<<<< HEAD
-    public function getCommandeParStatut($propiete, $signe, $Statut){
-        return $this->createQueryBuilder('c')
-           ->andWhere('c.'.$propiete.' '. $signe.' :val')
-           ->setParameter('val', $Statut)
-           ->getQuery()
-           ->getResult()
-       ;
-
-    }
-=======
->>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d
     public function add(Commande $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -51,32 +39,6 @@ class CommandeRepository extends ServiceEntityRepository
         }
     }
 
-<<<<<<< HEAD
-//    /**
-//     * @return Commande[] Returns an array of Commande objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Commande
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
-=======
     /**
      * @return Commande[] Returns an array of Commande objects
      */
@@ -157,5 +119,4 @@ class CommandeRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
->>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d
 }

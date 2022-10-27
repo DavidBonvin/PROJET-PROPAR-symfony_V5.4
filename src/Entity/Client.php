@@ -6,10 +6,7 @@ use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-<<<<<<< HEAD
-=======
 use Symfony\Component\Serializer\Annotation\Groups;
->>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d
 
 /**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
@@ -20,10 +17,7 @@ class Client
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-<<<<<<< HEAD
-=======
      * @Groups({"show_product"})
->>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d
      */
     private $id;
 
@@ -35,21 +29,11 @@ class Client
     /**
      * @ORM\Column(type="string", length=255)
      */
-<<<<<<< HEAD
-    private $Prenom;
-=======
     private $prenom;
->>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-<<<<<<< HEAD
-    private $Adresse;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-=======
     private $nomSociete;
 
     /**
@@ -59,7 +43,6 @@ class Client
 
     /**
      * @ORM\Column(type="string", length=255)
->>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d
      */
     private $email;
 
@@ -92,14 +75,6 @@ class Client
 
     public function getPrenom(): ?string
     {
-<<<<<<< HEAD
-        return $this->Prenom;
-    }
-
-    public function setPrenom(string $Prenom): self
-    {
-        $this->Prenom = $Prenom;
-=======
         return $this->prenom;
     }
 
@@ -118,28 +93,18 @@ class Client
     public function setNomSociete(string $nomSociete): self
     {
         $this->nomSociete = $nomSociete;
->>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d
 
         return $this;
     }
 
     public function getAdresse(): ?string
     {
-<<<<<<< HEAD
-        return $this->Adresse;
-    }
-
-    public function setAdresse(?string $Adresse): self
-    {
-        $this->Adresse = $Adresse;
-=======
         return $this->adresse;
     }
 
     public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
->>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d
 
         return $this;
     }
@@ -149,11 +114,7 @@ class Client
         return $this->email;
     }
 
-<<<<<<< HEAD
-    public function setEmail(?string $email): self
-=======
     public function setEmail(string $email): self
->>>>>>> 4f3f0cdcae019a613b63dff542d03f37766f324d
     {
         $this->email = $email;
 
